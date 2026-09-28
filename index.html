@@ -132,9 +132,54 @@
         ><div>
           <h2>{{ app.getStep(stepNumber).title }}</h2>
           <ol>
-            <li>Click the <strong>Start</strong> button.</li>
+            <li>
+              Click the <strong>Start</strong> button.
+              <figure
+                v-if="app.platform === 'Windows'"
+                class="figure d-block my-3"
+              >
+                <a
+                  href="./assets/images/windows/startButton.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open full-size image: Click the Start button."
+                  ><img
+                    src="./assets/images/windows/startButton.png"
+                    class="figure-img img-fluid rounded border"
+                    alt="Windows Start menu with an arrow pointing to the Start button."
+                    loading="lazy"
+                    decoding="async"
+                /></a>
+                <figcaption class="figure-caption">
+                  Click the Start button. Select the image to view it full size.
+                </figcaption>
+              </figure>
+            </li>
             <li>Type <code>cmd</code>.</li>
-            <li>Click <strong>Command Prompt</strong>.</li>
+            <li>
+              Click <strong>Command Prompt</strong>.
+              <figure
+                v-if="app.platform === 'Windows'"
+                class="figure d-block my-3"
+              >
+                <a
+                  href="./assets/images/windows/cmdShowing.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open full-size image: Search for cmd and open Command Prompt."
+                  ><img
+                    src="./assets/images/windows/cmdShowing.png"
+                    class="figure-img img-fluid rounded border"
+                    alt="Windows search for cmd showing Command Prompt as the best match."
+                    loading="lazy"
+                    decoding="async"
+                /></a>
+                <figcaption class="figure-caption">
+                  Search for cmd and open Command Prompt. Select the image to
+                  view it full size.
+                </figcaption>
+              </figure>
+            </li>
           </ol>
           <p>
             A black window opens with a line such as
@@ -241,6 +286,27 @@
               ><template v-if="app.platform === 'Mac'">Return</template></strong
             >:
             <div v-scope='CodeBlock({ code: "git --version" })'></div>
+            <figure
+              v-if="app.platform === 'Windows'"
+              class="figure d-block my-3"
+            >
+              <a
+                href="./assets/images/windows/winGitVersion.png"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open full-size image: An example of Git version output."
+                ><img
+                  src="./assets/images/windows/winGitVersion.png"
+                  class="figure-img img-fluid rounded border"
+                  alt="Command Prompt showing git --version and a Git version number."
+                  loading="lazy"
+                  decoding="async"
+              /></a>
+              <figcaption class="figure-caption">
+                An example of Git version output. Select the image to view it
+                full size.
+              </figcaption>
+            </figure>
             <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
               <a
                 href="./assets/images/macos/gitVersion.png"
@@ -271,9 +337,28 @@
               ><template v-if="app.platform === 'Mac'">Return</template></strong
             >:
             <template v-if="app.platform === 'Windows'"
-              ><div
-                v-scope='CodeBlock({ code: "py --version" })'
-              ></div></template
+              ><div v-scope='CodeBlock({ code: "py --version" })'></div>
+              <figure
+                v-if="app.platform === 'Windows'"
+                class="figure d-block my-3"
+              >
+                <a
+                  href="./assets/images/windows/winPyVersion.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open full-size image: An example of Python version output."
+                  ><img
+                    src="./assets/images/windows/winPyVersion.png"
+                    class="figure-img img-fluid rounded border"
+                    alt="Command Prompt showing py --version and Python 3.14.3."
+                    loading="lazy"
+                    decoding="async"
+                /></a>
+                <figcaption class="figure-caption">
+                  An example of Python version output. Select the image to view
+                  it full size.
+                </figcaption>
+              </figure></template
             ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
               ><div v-scope='CodeBlock({ code: "python3 --version" })'></div
             ></template>
@@ -319,7 +404,10 @@
             ></code
           >.
         </p>
-        <p v-if="app.platform === 'Mac'" class="text-muted">
+        <p
+          v-if="app.platform === 'Mac' || app.platform === 'Windows'"
+          class="text-muted"
+        >
           Your username, computer name, and version numbers may differ from
           these examples.
         </p>
@@ -474,6 +562,24 @@
             to view it full size.
           </figcaption>
         </figure>
+        <figure v-if="app.platform === 'Windows'" class="figure d-block my-3">
+          <a
+            href="./assets/images/windows/cdWindows.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: Use cd %USERPROFILE% to return to your user folder. Earlier commands shown are example history."
+            ><img
+              src="./assets/images/windows/cdWindows.png"
+              class="figure-img img-fluid rounded border"
+              alt="Command Prompt showing cd %USERPROFILE% and the user-folder prompt."
+              loading="lazy"
+              decoding="async"
+          /></a>
+          <figcaption class="figure-caption">
+            Use cd %USERPROFILE% to return to your user folder. Earlier commands
+            shown are example history. Select the image to view it full size.
+          </figcaption>
+        </figure>
         <aside
           class="alert alert-info mt-3"
           role="note"
@@ -545,6 +651,24 @@
           <figcaption class="figure-caption">
             The download is complete when the prompt returns. Select the image
             to view it full size.
+          </figcaption>
+        </figure>
+        <figure v-if="app.platform === 'Windows'" class="figure d-block my-3">
+          <a
+            href="./assets/images/windows/winGitClone.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: The download is complete when the prompt returns. Earlier commands shown are example history."
+            ><img
+              src="./assets/images/windows/winGitClone.png"
+              class="figure-img img-fluid rounded border"
+              alt="Command Prompt showing git clone and completed download output."
+              loading="lazy"
+              decoding="async"
+          /></a>
+          <figcaption class="figure-caption">
+            The download is complete when the prompt returns. Earlier commands
+            shown are example history. Select the image to view it full size.
           </figcaption>
         </figure>
         <aside
@@ -620,6 +744,24 @@
             size.
           </figcaption>
         </figure>
+        <figure v-if="app.platform === 'Windows'" class="figure d-block my-3">
+          <a
+            href="./assets/images/windows/winCdWriting.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: Open the downloaded program folder."
+            ><img
+              src="./assets/images/windows/winCdWriting.png"
+              class="figure-img img-fluid rounded border"
+              alt="Command Prompt showing cd wrtg-316-instructions and the updated folder prompt."
+              loading="lazy"
+              decoding="async"
+          /></a>
+          <figcaption class="figure-caption">
+            Open the downloaded program folder. Select the image to view it full
+            size.
+          </figcaption>
+        </figure>
         <aside
           class="alert alert-info mt-3"
           role="note"
@@ -687,6 +829,24 @@
               decoding="async"
             />
           </a>
+          <figcaption class="figure-caption">
+            Look for dino.py; other listed files may differ. Select the image to
+            view it full size.
+          </figcaption>
+        </figure>
+        <figure v-if="app.platform === 'Windows'" class="figure d-block my-3">
+          <a
+            href="./assets/images/windows/dir.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: Look for dino.py; other listed files may differ."
+            ><img
+              src="./assets/images/windows/dir.png"
+              class="figure-img img-fluid rounded border"
+              alt="Command Prompt directory listing with dino.py highlighted."
+              loading="lazy"
+              decoding="async"
+          /></a>
           <figcaption class="figure-caption">
             Look for dino.py; other listed files may differ. Select the image to
             view it full size.
@@ -839,6 +999,24 @@
             it full size.
           </figcaption>
         </figure>
+        <figure v-if="app.platform === 'Windows'" class="figure d-block my-3">
+          <a
+            href="./assets/images/windows/winGameShowing.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: The game start screen appears in Command Prompt."
+            ><img
+              src="./assets/images/windows/winGameShowing.png"
+              class="figure-img img-fluid rounded border"
+              alt="Dino Run start screen displayed in Windows Command Prompt."
+              loading="lazy"
+              decoding="async"
+          /></a>
+          <figcaption class="figure-caption">
+            The game start screen appears in Command Prompt. Select the image to
+            view it full size.
+          </figcaption>
+        </figure>
         <template v-if="app.platform === 'Windows'"
           ><aside
             class="alert alert-info mt-3"
@@ -861,6 +1039,27 @@
               Wait until the line
               <code>Successfully installed windows-curses</code> appears.
             </p>
+            <figure
+              v-if="app.platform === 'Windows'"
+              class="figure d-block my-3"
+            >
+              <a
+                href="./assets/images/windows/pipInstall.png"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open full-size image: The windows-curses add-on is installed successfully."
+                ><img
+                  src="./assets/images/windows/pipInstall.png"
+                  class="figure-img img-fluid rounded border"
+                  alt="Command Prompt showing py -m pip install windows-curses and a successful installation."
+                  loading="lazy"
+                  decoding="async"
+              /></a>
+              <figcaption class="figure-caption">
+                The windows-curses add-on is installed successfully. Select the
+                image to view it full size.
+              </figcaption>
+            </figure>
             <p>Then run <code>py dino.py</code> again.</p>
             <p>
               <strong><code>No such file or directory</code> appears</strong
