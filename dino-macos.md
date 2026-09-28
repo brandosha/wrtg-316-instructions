@@ -3,7 +3,9 @@
 ### Step 1: Open the Terminal
 
 1. Press **Command + Space** to open Spotlight Search.
+![Keyboard](images/keyboard.png)
 2. Type `Terminal` and press **Return**.
+   ![Terminal](images/spotlightSearch.png)
 
 A window opens with a line of text that ends in `%`. This window is the terminal.
 
@@ -13,10 +15,12 @@ A window opens with a line of text that ends in `%`. This window is the terminal
    ```
    git --version
    ```
+   ![Git version](images/gitVersion.png)
 2. Type the following command and press **Return**:
    ```
    python3 --version
    ```
+   ![Python version](images/pythonVersion.png)
 
 Each command should display a version number, such as `git version 2.39.5` or `Python 3.9.6`.
 
@@ -26,6 +30,7 @@ Type the following command and press **Return**:
 ```
 cd ~
 ```
+![Changing to home directory](images/cdHome.png)
 
 ### Step 4: Download (Clone) the Program
 
@@ -33,6 +38,7 @@ Type the following command and press **Return**:
 ```
 git clone https://github.com/trevorwattles/wrtg-316-instructions.git
 ```
+![Cloning the repository](images/gitClone.png)
 
 Wait until the line `Receiving objects: 100%` appears and the cursor returns.
 
@@ -42,6 +48,7 @@ Type the following command and press **Return**:
 ```
 cd wrtg-316-instructions
 ```
+![Changing to the writing directory](images/cdWriting.png)
 
 ### Step 6: Confirm That the Game File Is Present
 
@@ -49,12 +56,13 @@ Type the following command and press **Return**:
 ```
 ls
 ```
-
 The file `dino.py` should appear in the list.
+![Listing files](images/ls.png)
 
 ### Step 7: Enlarge the Terminal Window
 
 Double-click the title bar at the top of the Terminal window to enlarge it. The game needs space to display correctly.
+![Enlarged terminal](images/enlarge.png)
 
 ### Step 8: Run the Game
 
@@ -62,8 +70,10 @@ Type the following command and press **Return**:
 ```
 python3 dino.py
 ```
+![Running the game](images/runGame.png)
 
 The dinosaur game appears in the Terminal window.
+![Dino game running](images/gameShowing.png)
 
 ### Step 9: Play the Game
 
@@ -74,6 +84,8 @@ Use the following keys to play:
 | **Space**, **W**, or **Up Arrow** | Jump |
 | **S** or **Down Arrow** | Duck |
 | **P** | Pause |
+
+![Dino game running](images/gameRunning.gif)
 
 ### Step 10: Quit the Game
 
