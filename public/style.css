@@ -1,0 +1,11 @@
+/* Let the instruction column shrink within Bootstrap's flex row. */
+.instruction-content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Wrap long commands while preserving whitespace and copied command text. */
+.command-block {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

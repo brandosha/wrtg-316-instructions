@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How To ...</title>
+    <title>How to Run the Dinosaur Game</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -14,23 +14,25 @@
     <link href="./style.css" rel="stylesheet" />
   </head>
   <body>
-    <div v-scope="app" class="container py-3">
-      <h4>How To ...</h4>
+    <div v-scope class="container py-3">
+      <h1 class="mb-4">How to Run the Dinosaur Game</h1>
       <h5>Platform</h5>
       <div class="row">
         <div class="col col-lg-4 mb-3">
           <div class="list-group list-group-horizontal mb-3">
             <label
-              v-for="p in platforms"
+              v-for="p in app.platforms"
               class="list-group-item list-group-item-action text-center"
-              :class="{ active: platform === p }"
+              :class="{ active: app.platform === p }"
+              role="button"
             >
               <input
                 class="btn-check"
                 type="radio"
                 name="platform"
                 v-bind:value="p"
-                v-model="platform"
+                :checked="app.platform === p"
+                @change="app.changePlatform(p)"
               />
               {{ p }}
             </label>
@@ -42,35 +44,37 @@
         <div class="col-12 col-sm-4 mb-4">
           <div class="list-group">
             <a
-              v-for="step in steps"
+              v-for="step in app.steps"
               class="list-group-item list-group-item-action"
-              v-bind:class="{ active: currentStep === step.stepNumber }"
+              v-bind:class="{ active: app.currentStep === step.stepNumber }"
               href="#"
-              @click="goToStep(step.stepNumber)"
+              @click.prevent="app.goToStep(step.stepNumber)"
             >
-              {{ step.title }}
+              {{ app.getStep(step.stepNumber).title }}
             </a>
           </div>
         </div>
 
-        <div class="col">
-          <div v-for="step in steps" v-show="currentStep === step.stepNumber">
-            <!-- <h2>{{ step.title }}</h2> -->
-            <div v-scope="step"></div>
+        <div class="col-12 col-sm-8 instruction-content">
+          <div
+            v-for="step in app.steps"
+            v-show="app.currentStep === step.stepNumber"
+          >
+            <div v-scope="app.getStep(step.stepNumber)"></div>
 
             <div class="d-flex justify-content-between">
               <button
                 class="btn btn-primary"
-                :disabled="currentStep <= 0"
-                @click="goToStep(currentStep - 1)"
+                :disabled="app.currentStep <= 0"
+                @click="app.goToStep(app.currentStep - 1)"
               >
                 ← Previous
               </button>
 
               <button
                 class="btn btn-primary"
-                :disabled="currentStep >= steps.length - 1"
-                @click="goToStep(currentStep + 1)"
+                :disabled="app.currentStep >= app.steps.length - 1"
+                @click="app.goToStep(app.currentStep + 1)"
               >
                 Next →
               </button>
@@ -78,41 +82,732 @@
           </div>
         </div>
       </div>
-      <!-- <div v-scope="CodeBlock({ code: JSON.stringify(interaction_data) })"></div> -->
-
-      <!-- Hello, world!
-
-      <button @click="interaction_data.push({ click_time: new Date().toISOString() })">
-        Click Me
-      </button>
-
-      <a :href="formUrl">
-        Feedback Form
-      </a> -->
     </div>
 
-    <template id="step-0-template">
-      <div>
-        <h2>Introduction</h2>
-        <p>Hello, world!</p>
-      </div>
-    </template>
+    <template
+      id="step-0-template"
+      data-title-windows="Introduction"
+      data-title-mac="Introduction"
+      data-title-linux="Introduction"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <p>
+          These instructions will walk you through the steps to download a game from a website called GitHub which is a popular website that software developers use to post their code to. GitHub is a lot like Google Docs but made specifically for people to work on code together. In these instructions you will open GitHub, download a program for a simple game, and run that game on your own computer.
+        </p>
+        <p>
+          Select your operating system above, then choose
+          <strong>Next</strong> to begin. Troubleshooting notes below the
+          instructions explain how to resolve common problems.
+        </p>
 
-    <template id="step-1-template">
-      <div>
-        <h2>Step 1</h2>
-        <p>Do this first.</p>
-      </div>
-    </template>
+        <!-- <p>
+          Learn how to download and run a dinosaur game in your computer's
+          terminal. You will check the tools you need, download the game, and
+          use keyboard controls to play.
+        </p>
+        <p>
+          Before you begin, make sure you have an internet connection and
+          permission to install software on your computer. The game uses Git to
+          download its files and Python to run.
+        </p>
+        <p>
+          Select your operating system above, then choose
+          <strong>Next</strong> to begin. Troubleshooting notes below the
+          instructions explain how to resolve common problems.
+        </p> -->
+      </div></template
+    >
+
+    <template
+      id="step-1-template"
+      data-title-windows="Step 1: Open the Command Prompt"
+      data-title-mac="Step 1: Open the Terminal"
+      data-title-linux="Step 1: Open the Terminal"
+      ><template v-if="app.platform === 'Windows'"
+        ><div>
+          <h2>{{ app.getStep(stepNumber).title }}</h2>
+          <ol>
+            <li>Click the <strong>Start</strong> button.</li>
+            <li>Type <code>cmd</code>.</li>
+            <li>Click <strong>Command Prompt</strong>.</li>
+          </ol>
+          <p>
+            A black window opens with a line such as
+            <code>C:\Users\YourName&gt;</code>. This window is the Command
+            Prompt.
+          </p>
+        </div></template
+      ><template v-if="app.platform === 'Mac'"
+        ><div>
+          <h2>{{ app.getStep(stepNumber).title }}</h2>
+          <ol>
+            <li>
+              Press <strong>Command + Space</strong> to open Spotlight Search.
+            </li>
+            <li>
+              Type <code>Terminal</code> and press <strong>Return</strong>.
+            </li>
+          </ol>
+          <p>
+            A window opens with a line of text that ends in <code>%</code>. This
+            window is the terminal.
+          </p>
+        </div></template
+      ><template v-if="app.platform === 'Linux'"
+        ><div>
+          <h2>{{ app.getStep(stepNumber).title }}</h2>
+          <p>Press <strong>Ctrl + Alt + T</strong>.</p>
+          <p>
+            A window opens with a line of text that ends in <code>$</code>. This
+            window is the terminal.
+          </p>
+          <aside
+            class="alert alert-info mt-3"
+            role="note"
+            aria-label="Troubleshooting"
+          >
+            <h3 class="h6">Troubleshooting</h3>
+            <p>
+              <strong
+                ><strong>Ctrl + Alt + T</strong> does not open the
+                terminal</strong
+              ><br />Open the applications menu, search for
+              <strong>Terminal</strong>, and click it.
+            </p>
+          </aside>
+        </div></template
+      ></template
+    >
+
+    <template
+      id="step-2-template"
+      data-title-windows="Step 2: Confirm That Git and Python Are Installed"
+      data-title-mac="Step 2: Confirm That Git and Python Are Installed"
+      data-title-linux="Step 2: Confirm That Git and Python Are Installed"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <ol>
+          <li>
+            Type the following command and press
+            <strong
+              ><template
+                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                >Enter</template
+              ><template v-if="app.platform === 'Mac'">Return</template></strong
+            >:
+            <div v-scope='CodeBlock({ code: "git --version" })'></div>
+          </li>
+          <li>
+            Type the following command and press
+            <strong
+              ><template
+                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                >Enter</template
+              ><template v-if="app.platform === 'Mac'">Return</template></strong
+            >:
+            <template v-if="app.platform === 'Windows'"
+              ><div
+                v-scope='CodeBlock({ code: "py --version" })'
+              ></div></template
+            ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
+              ><div v-scope='CodeBlock({ code: "python3 --version" })'></div
+            ></template>
+          </li>
+        </ol>
+        <p>
+          Each command should display a version number, such as
+          <code
+            ><template v-if="app.platform === 'Windows'"
+              >git version 2.47.0.windows.1</template
+            ><template v-if="app.platform === 'Mac'"
+              >git version 2.39.5</template
+            ><template v-if="app.platform === 'Linux'"
+              >git version 2.43.0</template
+            ></code
+          >
+          or
+          <code
+            ><template v-if="app.platform === 'Windows'">Python 3.13.0</template
+            ><template v-if="app.platform === 'Mac'">Python 3.9.6</template
+            ><template v-if="app.platform === 'Linux'"
+              >Python 3.12.3</template
+            ></code
+          >.
+        </p>
+        <template v-if="app.platform === 'Windows'"
+          ><aside
+            class="alert alert-info mt-3"
+            role="note"
+            aria-label="Troubleshooting"
+          >
+            <h3 class="h6">Troubleshooting</h3>
+            <p>
+              <strong
+                ><code
+                  >is not recognized as an internal or external command</code
+                >
+                appears</strong
+              ><br />Close and reopen the Command Prompt, then try again. If the
+              error remains, install Git from <strong>git-scm.com</strong> and
+              Python from <strong>python.org</strong>. In the Python installer,
+              check the box labeled <strong>Add python.exe to PATH</strong>.
+            </p>
+            <p>
+              <strong
+                >Typing <code>python</code> opens the Microsoft Store</strong
+              ><br />Type <code>py</code> instead of <code>python</code>, as
+              shown in these instructions.
+            </p>
+            <p>
+              <strong>The Command Prompt stops responding</strong><br />Press
+              <strong>Ctrl + C</strong> to stop the current command.
+            </p>
+          </aside></template
+        ><template v-if="app.platform === 'Mac'"
+          ><aside
+            class="alert alert-info mt-3"
+            role="note"
+            aria-label="Troubleshooting"
+          >
+            <h3 class="h6">Troubleshooting</h3>
+            <p>
+              <strong><code>python3: command not found</code> appears</strong
+              ><br />
+              Download and install Python from
+              <a
+                href="https://www.python.org/downloads/macos/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >the Python download site</a
+              >. Close and reopen Terminal, then run
+              <code>python3 --version</code> again.
+            </p>
+            <p>
+              <strong><code>git: command not found</code> appears</strong><br />
+              Install Git with Homebrew:
+            </p>
+            <ol>
+              <li>
+                If Homebrew is not installed, follow the installation
+                instructions at
+                <a
+                  href="https://brew.sh/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >brew.sh</a
+                >. Follow the installer's <strong>Next steps</strong> to make
+                the <code>brew</code> command available in Terminal.
+              </li>
+              <li>
+                Type the following command and press <strong>Return</strong>:
+                <div v-scope='CodeBlock({ code: "brew install git" })'></div>
+                Wait for the installation to finish.
+              </li>
+              <li>
+                Close and reopen Terminal, then run
+                <code>git --version</code> again to confirm that Git is
+                installed.
+              </li>
+            </ol>
+            <p>
+              If <code>brew: command not found</code> appears, complete the
+              Homebrew installer's <strong>Next steps</strong>, then try again.
+            </p>
+            <p>
+              <strong>The Terminal stops responding</strong><br />Press
+              <strong>Control + C</strong> to stop the current command.
+            </p>
+          </aside></template
+        ><template v-if="app.platform === 'Linux'"
+          ><aside
+            class="alert alert-info mt-3"
+            role="note"
+            aria-label="Troubleshooting"
+          >
+            <h3 class="h6">Troubleshooting</h3>
+            <p>
+              <strong><code>command not found</code> appears</strong><br />Git
+              or Python is not installed. Type
+              <code>sudo apt install -y git python3</code> (on Fedora,
+              <code>sudo dnf install -y git python3</code>), press
+              <strong>Enter</strong>, and enter your computer password when
+              asked.
+            </p>
+            <p>
+              <strong>The terminal stops responding</strong><br />Press
+              <strong>Ctrl + C</strong> to stop the current command.
+            </p>
+          </aside></template
+        >
+      </div></template
+    >
+
+    <template
+      id="step-3-template"
+      data-title-windows="Step 3: Move to Your User Folder"
+      data-title-mac="Step 3: Move to Your Home Folder"
+      data-title-linux="Step 3: Move to Your Home Folder"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <p>
+          Type the following command and press
+          <strong
+            ><template
+              v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+              >Enter</template
+            ><template v-if="app.platform === 'Mac'">Return</template></strong
+          >:
+        </p>
+        <template v-if="app.platform === 'Windows'"
+          ><div
+            v-scope='CodeBlock({ code: "cd %USERPROFILE%" })'
+          ></div></template
+        ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
+          ><div v-scope='CodeBlock({ code: "cd ~" })'></div
+        ></template>
+        <aside
+          class="alert alert-info mt-3"
+          role="note"
+          aria-label="Troubleshooting"
+        >
+          <h3 class="h6">Troubleshooting</h3>
+          <p>
+            <strong
+              ><template v-if="app.platform === 'Windows'"
+                >The Command Prompt stops responding</template
+              ><template v-if="app.platform === 'Mac'"
+                >The Terminal stops responding</template
+              ><template v-if="app.platform === 'Linux'"
+                >The terminal stops responding</template
+              ></strong
+            ><br />Press
+            <strong
+              ><template
+                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                >Ctrl + C</template
+              ><template v-if="app.platform === 'Mac'"
+                >Control + C</template
+              ></strong
+            >
+            to stop the current command.
+          </p>
+        </aside>
+      </div></template
+    >
+
+    <template
+      id="step-4-template"
+      data-title-windows="Step 4: Download (Clone) the Program"
+      data-title-mac="Step 4: Download (Clone) the Program"
+      data-title-linux="Step 4: Download (Clone) the Program"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <p>
+          Type the following command and press
+          <strong
+            ><template
+              v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+              >Enter</template
+            ><template v-if="app.platform === 'Mac'">Return</template></strong
+          >:
+        </p>
+        <div
+          v-scope='CodeBlock({ code: "git clone https://github.com/trevorwattles/wrtg-316-instructions.git" })'
+        ></div>
+        <p>
+          Wait until the line <code>Receiving objects: 100%</code> appears and
+          the cursor returns.
+        </p>
+        <aside
+          class="alert alert-info mt-3"
+          role="note"
+          aria-label="Troubleshooting"
+        >
+          <h3 class="h6">Troubleshooting</h3>
+          <p>
+            <strong
+              ><code>destination path ... already exists</code> appears</strong
+            ><br />The program is already downloaded. Continue to
+            <span v-scope="StepLink({ stepNumber: 5 })"></span>.
+          </p>
+          <p>
+            <strong
+              ><template v-if="app.platform === 'Windows'"
+                >The Command Prompt stops responding</template
+              ><template v-if="app.platform === 'Mac'"
+                >The Terminal stops responding</template
+              ><template v-if="app.platform === 'Linux'"
+                >The terminal stops responding</template
+              ></strong
+            ><br />Press
+            <strong
+              ><template
+                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                >Ctrl + C</template
+              ><template v-if="app.platform === 'Mac'"
+                >Control + C</template
+              ></strong
+            >
+            to stop the current command.
+          </p>
+        </aside>
+      </div></template
+    >
+
+    <template
+      id="step-5-template"
+      data-title-windows="Step 5: Open the Program&#x27;s Folder"
+      data-title-mac="Step 5: Open the Program&#x27;s Folder"
+      data-title-linux="Step 5: Open the Program&#x27;s Folder"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <p>
+          Type the following command and press
+          <strong
+            ><template
+              v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+              >Enter</template
+            ><template v-if="app.platform === 'Mac'">Return</template></strong
+          >:
+        </p>
+        <div v-scope='CodeBlock({ code: "cd wrtg-316-instructions" })'></div>
+        <aside
+          class="alert alert-info mt-3"
+          role="note"
+          aria-label="Troubleshooting"
+        >
+          <h3 class="h6">Troubleshooting</h3>
+          <p>
+            <strong
+              ><template v-if="app.platform === 'Windows'"
+                >The Command Prompt stops responding</template
+              ><template v-if="app.platform === 'Mac'"
+                >The Terminal stops responding</template
+              ><template v-if="app.platform === 'Linux'"
+                >The terminal stops responding</template
+              ></strong
+            ><br />Press
+            <strong
+              ><template
+                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                >Ctrl + C</template
+              ><template v-if="app.platform === 'Mac'"
+                >Control + C</template
+              ></strong
+            >
+            to stop the current command.
+          </p>
+        </aside>
+      </div></template
+    >
+
+    <template
+      id="step-6-template"
+      data-title-windows="Step 6: Confirm That the Game File Is Present"
+      data-title-mac="Step 6: Confirm That the Game File Is Present"
+      data-title-linux="Step 6: Confirm That the Game File Is Present"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <p>
+          Type the following command and press
+          <strong
+            ><template
+              v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+              >Enter</template
+            ><template v-if="app.platform === 'Mac'">Return</template></strong
+          >:
+        </p>
+        <template v-if="app.platform === 'Windows'"
+          ><div v-scope='CodeBlock({ code: "dir" })'></div></template
+        ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
+          ><div v-scope='CodeBlock({ code: "ls" })'></div
+        ></template>
+        <p>The file <code>dino.py</code> should appear in the list.</p>
+        <aside
+          class="alert alert-info mt-3"
+          role="note"
+          aria-label="Troubleshooting"
+        >
+          <h3 class="h6">Troubleshooting</h3>
+          <p>
+            <strong
+              ><template v-if="app.platform === 'Windows'"
+                >The Command Prompt stops responding</template
+              ><template v-if="app.platform === 'Mac'"
+                >The Terminal stops responding</template
+              ><template v-if="app.platform === 'Linux'"
+                >The terminal stops responding</template
+              ></strong
+            ><br />Press
+            <strong
+              ><template
+                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                >Ctrl + C</template
+              ><template v-if="app.platform === 'Mac'"
+                >Control + C</template
+              ></strong
+            >
+            to stop the current command.
+          </p>
+        </aside>
+      </div></template
+    >
+
+    <template
+      id="step-7-template"
+      data-title-windows="Step 7: Maximize the Window"
+      data-title-mac="Step 7: Enlarge the Terminal Window"
+      data-title-linux="Step 7: Maximize the Terminal Window"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <template v-if="app.platform === 'Windows'"
+          ><p>
+            Click the <strong>Maximize</strong> button (the square in the
+            upper-right corner of the window). The game needs space to display
+            correctly.
+          </p></template
+        ><template v-if="app.platform === 'Mac'"
+          ><p>
+            Double-click the title bar at the top of the Terminal window to
+            enlarge it. The game needs space to display correctly.
+          </p></template
+        ><template v-if="app.platform === 'Linux'"
+          ><p>
+            Double-click the title bar at the top of the terminal window to
+            maximize it. The game needs space to display correctly.
+          </p></template
+        >
+      </div></template
+    >
+
+    <template
+      id="step-8-template"
+      data-title-windows="Step 8: Run the Game"
+      data-title-mac="Step 8: Run the Game"
+      data-title-linux="Step 8: Run the Game"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <p>
+          Type the following command and press
+          <strong
+            ><template
+              v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+              >Enter</template
+            ><template v-if="app.platform === 'Mac'">Return</template></strong
+          >:
+        </p>
+        <template v-if="app.platform === 'Windows'"
+          ><div v-scope='CodeBlock({ code: "py dino.py" })'></div></template
+        ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
+          ><div v-scope='CodeBlock({ code: "python3 dino.py" })'></div
+        ></template>
+        <p>
+          <template v-if="app.platform === 'Windows'"
+            >The dinosaur game appears in the Command Prompt window.</template
+          ><template v-if="app.platform === 'Mac'"
+            >The dinosaur game appears in the Terminal window.</template
+          ><template v-if="app.platform === 'Linux'"
+            >The dinosaur game appears in the terminal window.</template
+          >
+        </p>
+        <template v-if="app.platform === 'Windows'"
+          ><aside
+            class="alert alert-info mt-3"
+            role="note"
+            aria-label="Troubleshooting"
+          >
+            <h3 class="h6">Troubleshooting</h3>
+            <p>
+              <strong><code>No module named '_curses'</code> appears</strong>
+            </p>
+            <p>
+              Windows needs one small add-on for the game to display in the
+              Command Prompt. Type the following command and press
+              <strong>Enter</strong>:
+            </p>
+            <div
+              v-scope='CodeBlock({ code: "py -m pip install windows-curses" })'
+            ></div>
+            <p>
+              Wait until the line
+              <code>Successfully installed windows-curses</code> appears.
+            </p>
+            <p>Then run <code>py dino.py</code> again.</p>
+            <p>
+              <strong><code>No such file or directory</code> appears</strong
+              ><br />You are in the wrong folder. Repeat
+              <span v-scope="StepLink({ stepNumber: 5 })"></span>.
+            </p>
+            <p>
+              <strong>The game looks cut off or garbled</strong><br />Maximize
+              the window (<span v-scope="StepLink({ stepNumber: 7 })"></span>)
+              and run the game again.
+            </p>
+            <p>
+              <strong>The Command Prompt stops responding</strong><br />Press
+              <strong>Ctrl + C</strong> to stop the current command.
+            </p>
+          </aside></template
+        ><template v-if="app.platform === 'Mac'"
+          ><aside
+            class="alert alert-info mt-3"
+            role="note"
+            aria-label="Troubleshooting"
+          >
+            <h3 class="h6">Troubleshooting</h3>
+            <p>
+              <strong><code>No such file or directory</code> appears</strong
+              ><br />You are in the wrong folder. Repeat
+              <span v-scope="StepLink({ stepNumber: 5 })"></span>.
+            </p>
+            <p>
+              <strong>The game looks cut off or garbled</strong><br />Enlarge
+              the window (<span v-scope="StepLink({ stepNumber: 7 })"></span>)
+              and run the game again.
+            </p>
+            <p>
+              <strong>The Terminal stops responding</strong><br />Press
+              <strong>Control + C</strong> to stop the current command.
+            </p>
+          </aside></template
+        ><template v-if="app.platform === 'Linux'"
+          ><aside
+            class="alert alert-info mt-3"
+            role="note"
+            aria-label="Troubleshooting"
+          >
+            <h3 class="h6">Troubleshooting</h3>
+            <p>
+              <strong><code>No such file or directory</code> appears</strong
+              ><br />You are in the wrong folder. Repeat
+              <span v-scope="StepLink({ stepNumber: 5 })"></span>.
+            </p>
+            <p>
+              <strong>The game looks cut off or garbled</strong><br />Maximize
+              the window (<span v-scope="StepLink({ stepNumber: 7 })"></span>)
+              and run the game again.
+            </p>
+            <p>
+              <strong>The terminal stops responding</strong><br />Press
+              <strong>Ctrl + C</strong> to stop the current command.
+            </p>
+          </aside></template
+        >
+      </div></template
+    >
+
+    <template
+      id="step-9-template"
+      data-title-windows="Step 9: Play the Game"
+      data-title-mac="Step 9: Play the Game"
+      data-title-linux="Step 9: Play the Game"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <p>Use the following keys to play:</p>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Key</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Space</strong>, <strong>W</strong>, or
+                  <strong>Up Arrow</strong>
+                </td>
+                <td>Jump</td>
+              </tr>
+              <tr>
+                <td><strong>S</strong> or <strong>Down Arrow</strong></td>
+                <td>Duck</td>
+              </tr>
+              <tr>
+                <td><strong>P</strong></td>
+                <td>Pause</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Press <strong>Q</strong
+          > to quit when your done playing.
+          <template v-if="app.platform === 'Windows'">
+            The normal Command Prompt window returns. </template
+          ><template v-if="app.platform === 'Mac'">
+            The normal Terminal window returns. </template
+          ><template v-if="app.platform === 'Linux'">
+            The normal terminal window returns.
+          </template>
+        </p>
+        <aside
+          class="alert alert-info mt-3"
+          role="note"
+          aria-label="Troubleshooting"
+        >
+          <h3 class="h6">Troubleshooting</h3>
+          <p>
+            <strong>The keys do nothing</strong><br /><template
+              v-if="app.platform === 'Windows'"
+              >Click inside the Command Prompt window, then try again. </template
+            ><template v-if="app.platform === 'Mac'"
+              >Click inside the Terminal window, then try again. </template
+            ><template v-if="app.platform === 'Linux'"
+              >Click inside the terminal window, then try again.
+            </template>
+          </p>
+        </aside>
+      </div></template
+    >
+
+    <template
+      id="step-10-template"
+      data-title-windows="Conclusion"
+      data-title-mac="Conclusion"
+      data-title-linux="Conclusion"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <p>
+          Congratulations! You have now accessed GitHub, downloaded a simple program, and ran it on your own computer. These are the steps that software developers do everyday to work on programs together. You now have a solid foundation to start accessing public programs and working on your own programs yourself.
+        </p>
+        <h5>Survey</h5>
+        <p>
+          Please take the time to fill out the survey below to let us know what we can improve about these instructions:
+        </p>
+        <p>
+          <a
+            :href="app.getformUrl()"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Click here to take the survey</a
+          >
+        </p>
+      </div></template
+    >
+
+    <template id="step-link-template"
+      ><a
+        href="#"
+        @click.prevent="follow()"
+        :title="app.getStep(stepNumber).title"
+        >{{ app.getStep(stepNumber).title.split(":")[0] }}</a
+      ></template
+    >
 
     <template id="code-block-template">
       <div>
-        <pre>{{ code }}</pre>
-        <button @click="copy()">Copy</button>
+        <pre
+          class="command-block bg-light border rounded p-3 mb-2"
+        ><code>{{ code }}</code></pre>
+        <button class="btn btn-outline-secondary btn-sm mb-3" @click="copy()">
+          Copy
+        </button>
       </div>
     </template>
 
-    <script src="https://unpkg.com/petite-vue" defer init></script>
+    <script src="https://unpkg.com/petite-vue"></script>
     <script>
       let deviceOS = (() => {
         let platform = navigator.platform.toLowerCase();
@@ -122,24 +817,53 @@
         return null;
       })();
 
-      let app = {
+      // Read each instruction template once; reuse its component for every lookup.
+      const instructionSteps = new Map();
+      const stepNumbers = new Set();
+      for (const template of document.querySelectorAll(
+        'template[id^="step-"][data-title-windows]',
+      )) {
+        const match = template.id.match(/^step-(\d+)-template$/);
+        if (!match) continue;
+        const stepNumber = Number(match[1]);
+        for (const platform of ["Windows", "Mac", "Linux"]) {
+          instructionSteps.set(`${stepNumber}:${platform}`, {
+            stepNumber,
+            platform,
+            title: template.dataset[`title${platform}`],
+            $template: `#${template.id}`,
+          });
+        }
+        stepNumbers.add(stepNumber);
+      }
+
+      let app = PetiteVue.reactive({
         platforms: ["Windows", "Mac", "Linux"],
-        platform: deviceOS || "linux",
-        steps: [
-          InstructionStep({ stepNumber: 0, title: "Introduction" }),
-          InstructionStep({ stepNumber: 1, title: "Step 1" }),
-        ],
+        platform: deviceOS || "Linux",
+        steps: [...stepNumbers]
+          .sort((a, b) => a - b)
+          .map((stepNumber) => ({ stepNumber })),
         currentStep: 0,
 
-        goToStep(stepNumber) {
-          this.recordInteraction("step_change", {
-            fromStep: this.steps[this.currentStep].title,
-            toStep: this.steps[stepNumber].title,
-          });
+        getStep(stepNumber, platform = this.platform) {
+          if (
+            !Number.isInteger(stepNumber) ||
+            !this.platforms.includes(platform)
+          )
+            return null;
+          return instructionSteps.get(`${stepNumber}:${platform}`) || null;
+        },
 
-          if (stepNumber >= 0 && stepNumber < this.steps.length) {
-            this.currentStep = stepNumber;
-          }
+        goToStep(stepNumber) {
+          const toStep = this.getStep(stepNumber);
+          if (!toStep) return;
+          this.recordInteraction("step_change", {
+            fromStep: this.getStep(this.currentStep).title,
+            toStep: toStep.title,
+          });
+          this.currentStep = stepNumber;
+
+          if (stepNumber === 0) this.reset();
         },
         changePlatform(newPlatform) {
           if (this.platforms.includes(newPlatform)) {
@@ -170,19 +894,19 @@
         },
 
         interaction_data: [],
-        get formUrl() {
+        getformUrl() {
           return `https://docs.google.com/forms/d/e/1FAIpQLSc72u-MWgYh8_HAQXXTlufcHuKQKIXX183iPzKUAeMPgupUmA/viewform?usp=pp_url&entry.1245076436=${encodeURIComponent(JSON.stringify(this.interaction_data))}`;
         },
-      };
+      });
       app.reset();
 
-      function InstructionStep({ stepNumber, title }) {
+      // Step numbers use the same zero-based indexing as app.getStep().
+      function StepLink({ stepNumber }) {
         return {
-          $template: `#step-${stepNumber}-template`,
-          title: title,
+          $template: "#step-link-template",
           stepNumber,
-          get platform() {
-            return app.platform;
+          follow() {
+            app.goToStep(this.stepNumber);
           },
         };
       }
@@ -197,6 +921,8 @@
           },
         };
       }
+
+      PetiteVue.createApp({ app, StepLink, CodeBlock }).mount();
 
       // Catch standard runtime errors (syntax, reference, type errors)
       window.addEventListener("error", (event) => {
