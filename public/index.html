@@ -4,8 +4,221 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>How To ...</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link href="./style.css" rel="stylesheet" />
   </head>
   <body>
-    Hello, world!
+    <div v-scope="app" class="container py-3">
+      <h4>How To ...</h4>
+      <h5>Platform</h5>
+      <div class="row">
+        <div class="col col-lg-4 mb-3">
+          <div class="list-group list-group-horizontal mb-3">
+            <label
+              v-for="p in platforms"
+              class="list-group-item list-group-item-action text-center"
+              :class="{ active: platform === p }"
+            >
+              <input
+                class="btn-check"
+                type="radio"
+                name="platform"
+                v-bind:value="p"
+                v-model="platform"
+              />
+              {{ p }}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-sm-4 mb-4">
+          <div class="list-group">
+            <a
+              v-for="step in steps"
+              class="list-group-item list-group-item-action"
+              v-bind:class="{ active: currentStep === step.stepNumber }"
+              href="#"
+              @click="goToStep(step.stepNumber)"
+            >
+              {{ step.title }}
+            </a>
+          </div>
+        </div>
+
+        <div class="col">
+          <div v-for="step in steps" v-show="currentStep === step.stepNumber">
+            <!-- <h2>{{ step.title }}</h2> -->
+            <div v-scope="step"></div>
+
+            <div class="d-flex justify-content-between">
+              <button
+                class="btn btn-primary"
+                :disabled="currentStep <= 0"
+                @click="goToStep(currentStep - 1)"
+              >
+                ← Previous
+              </button>
+
+              <button
+                class="btn btn-primary"
+                :disabled="currentStep >= steps.length - 1"
+                @click="goToStep(currentStep + 1)"
+              >
+                Next →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div v-scope="CodeBlock({ code: JSON.stringify(interaction_data) })"></div> -->
+
+      <!-- Hello, world!
+
+      <button @click="interaction_data.push({ click_time: new Date().toISOString() })">
+        Click Me
+      </button>
+
+      <a :href="formUrl">
+        Feedback Form
+      </a> -->
+    </div>
+
+    <template id="step-0-template">
+      <div>
+        <h2>Introduction</h2>
+        <p>Hello, world!</p>
+      </div>
+    </template>
+
+    <template id="step-1-template">
+      <div>
+        <h2>Step 1</h2>
+        <p>Do this first.</p>
+      </div>
+    </template>
+
+    <template id="code-block-template">
+      <div>
+        <pre>{{ code }}</pre>
+        <button @click="copy()">Copy</button>
+      </div>
+    </template>
+
+    <script src="https://unpkg.com/petite-vue" defer init></script>
+    <script>
+      let deviceOS = (() => {
+        let platform = navigator.platform.toLowerCase();
+        if (platform.startsWith("win")) return "Windows";
+        if (platform.startsWith("mac")) return "Mac";
+        if (platform.startsWith("linux")) return "Linux";
+        return null;
+      })();
+
+      let app = {
+        platforms: ["Windows", "Mac", "Linux"],
+        platform: deviceOS || "linux",
+        steps: [
+          InstructionStep({ stepNumber: 0, title: "Introduction" }),
+          InstructionStep({ stepNumber: 1, title: "Step 1" }),
+        ],
+        currentStep: 0,
+
+        goToStep(stepNumber) {
+          this.recordInteraction("step_change", {
+            fromStep: this.steps[this.currentStep].title,
+            toStep: this.steps[stepNumber].title,
+          });
+
+          if (stepNumber >= 0 && stepNumber < this.steps.length) {
+            this.currentStep = stepNumber;
+          }
+        },
+        changePlatform(newPlatform) {
+          if (this.platforms.includes(newPlatform)) {
+            let oldPlatform = this.platform;
+            this.platform = newPlatform;
+            this.recordInteraction("platform_change", {
+              from: oldPlatform,
+              to: newPlatform,
+            });
+          }
+        },
+
+        reset() {
+          this.currentStep = 0;
+          this.interaction_data = [
+            {
+              action: "start",
+              start_time: new Date().toISOString(),
+            },
+          ];
+        },
+        recordInteraction(action, details = {}) {
+          this.interaction_data.push({
+            action,
+            ...details,
+            timestamp: new Date().toISOString(),
+          });
+        },
+
+        interaction_data: [],
+        get formUrl() {
+          return `https://docs.google.com/forms/d/e/1FAIpQLSc72u-MWgYh8_HAQXXTlufcHuKQKIXX183iPzKUAeMPgupUmA/viewform?usp=pp_url&entry.1245076436=${encodeURIComponent(JSON.stringify(this.interaction_data))}`;
+        },
+      };
+      app.reset();
+
+      function InstructionStep({ stepNumber, title }) {
+        return {
+          $template: `#step-${stepNumber}-template`,
+          title: title,
+          stepNumber,
+          get platform() {
+            return app.platform;
+          },
+        };
+      }
+
+      function CodeBlock({ code }) {
+        return {
+          $template: "#code-block-template",
+          code,
+          async copy() {
+            await navigator.clipboard.writeText(this.code);
+            app.recordInteraction("copy_code", { code: this.code });
+          },
+        };
+      }
+
+      // Catch standard runtime errors (syntax, reference, type errors)
+      window.addEventListener("error", (event) => {
+        console.error("Global Error Caught:", event.error || event.message);
+        // Send to your error monitoring service here
+
+        app.recordInteraction("error", {
+          message: event.error ? event.error.message : event.message,
+          filename: event.filename,
+          lineno: event.lineno,
+          colno: event.colno,
+        });
+      });
+
+      // Catch unhandled promise rejections (async/await, fetch failures)
+      window.addEventListener("unhandledrejection", (event) => {
+        console.error("Unhandled Promise Rejection:", event.reason);
+
+        app.recordInteraction("unhandled_rejection", {
+          reason: event.reason,
+        });
+      });
+    </script>
   </body>
 </html>

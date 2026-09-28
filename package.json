@@ -1,11 +1,6 @@
 {
   "scripts": {
-    "start": "tsx server/index.ts"
-  },
-  "dependencies": {
-    "@hono/node-server": "^2.1.1",
-    "hono": "^4.13.9",
-    "tsx": "^4.23.15"
+    "prettier": "prettier . --write"
   },
   "devDependencies": {
     "prettier": "3.9.9"
