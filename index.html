@@ -128,145 +128,156 @@
       data-title-windows="Step 1: Open the Command Prompt"
       data-title-mac="Step 1: Open the Terminal"
       data-title-linux="Step 1: Open the Terminal"
-      ><template v-if="app.platform === 'Windows'"
-        ><div>
-          <h2>{{ app.getStep(stepNumber).title }}</h2>
-          <ol>
-            <li>
-              Click the <strong>Start</strong> button.
-              <figure
-                v-if="app.platform === 'Windows'"
-                class="figure d-block my-3"
-              >
-                <a
-                  href="./assets/images/windows/startButton.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open full-size image: Click the Start button."
-                  ><img
-                    src="./assets/images/windows/startButton.png"
-                    class="figure-img img-fluid rounded border"
-                    alt="Windows Start menu with an arrow pointing to the Start button."
-                    loading="lazy"
-                    decoding="async"
-                /></a>
-                <figcaption class="figure-caption">
-                  Click the Start button. Select the image to view it full size.
-                </figcaption>
-              </figure>
-            </li>
-            <li>Type <code>cmd</code>.</li>
-            <li>
-              Click <strong>Command Prompt</strong>.
-              <figure
-                v-if="app.platform === 'Windows'"
-                class="figure d-block my-3"
-              >
-                <a
-                  href="./assets/images/windows/cmdShowing.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open full-size image: Search for cmd and open Command Prompt."
-                  ><img
-                    src="./assets/images/windows/cmdShowing.png"
-                    class="figure-img img-fluid rounded border"
-                    alt="Windows search for cmd showing Command Prompt as the best match."
-                    loading="lazy"
-                    decoding="async"
-                /></a>
-                <figcaption class="figure-caption">
-                  Search for cmd and open Command Prompt. Select the image to
-                  view it full size.
-                </figcaption>
-              </figure>
-            </li>
-          </ol>
-          <p>
-            A black window opens with a line such as
-            <code>C:\Users\YourName&gt;</code>. This window is the Command
-            Prompt.
-          </p>
-        </div></template
-      ><template v-if="app.platform === 'Mac'"
-        ><div>
-          <h2>{{ app.getStep(stepNumber).title }}</h2>
-          <ol>
-            <li>
-              Press <strong>Command + Space</strong> to open Spotlight Search.
-              <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-                <a
-                  href="./assets/images/macos/keyboard.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open full-size image: Press Command + Space to open Spotlight."
+      ><div>
+        <div v-if="app.platform === 'Windows'">
+          <div>
+            <h2>{{ app.getStep(stepNumber).title }}</h2>
+            <ol>
+              <li>
+                Click the <strong>Start</strong> button.
+                <figure
+                  v-if="app.platform === 'Windows'"
+                  class="figure d-block my-3"
                 >
-                  <img
-                    src="./assets/images/macos/keyboard.png"
-                    class="figure-img img-fluid rounded border"
-                    alt="Mac keyboard with Command and Space highlighted."
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </a>
-                <figcaption class="figure-caption">
-                  Press Command + Space to open Spotlight. Select the image to
-                  view it full size.
-                </figcaption>
-              </figure>
-            </li>
-            <li>
-              Type <code>Terminal</code> and press <strong>Return</strong>.
-              <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-                <a
-                  href="./assets/images/macos/spotlightSearch.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open full-size image: Search for Terminal and press Return."
+                  <a
+                    href="./assets/images/windows/startButton.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open full-size image: Click the Start button."
+                    ><img
+                      src="./assets/images/windows/startButton.png"
+                      class="figure-img img-fluid rounded border"
+                      alt="Windows Start menu with an arrow pointing to the Start button."
+                      loading="lazy"
+                      decoding="async"
+                  /></a>
+                  <figcaption class="figure-caption">
+                    Click the Start button. Select the image to view it full
+                    size.
+                  </figcaption>
+                </figure>
+              </li>
+              <li>Type <code>cmd</code>.</li>
+              <li>
+                Click <strong>Command Prompt</strong>.
+                <figure
+                  v-if="app.platform === 'Windows'"
+                  class="figure d-block my-3"
                 >
-                  <img
-                    src="./assets/images/macos/spotlightSearch.png"
-                    class="figure-img img-fluid rounded border"
-                    alt="Spotlight Search showing Terminal as the first result."
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </a>
-                <figcaption class="figure-caption">
-                  Search for Terminal and press Return. Select the image to view
-                  it full size.
-                </figcaption>
-              </figure>
-            </li>
-          </ol>
-          <p>
-            A window opens with a line of text that ends in <code>%</code>. This
-            window is the terminal.
-          </p>
-        </div></template
-      ><template v-if="app.platform === 'Linux'"
-        ><div>
-          <h2>{{ app.getStep(stepNumber).title }}</h2>
-          <p>Press <strong>Ctrl + Alt + T</strong>.</p>
-          <p>
-            A window opens with a line of text that ends in <code>$</code>. This
-            window is the terminal.
-          </p>
-          <aside
-            class="alert alert-info mt-3"
-            role="note"
-            aria-label="Troubleshooting"
-          >
-            <h3 class="h6">Troubleshooting</h3>
+                  <a
+                    href="./assets/images/windows/cmdShowing.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open full-size image: Search for cmd and open Command Prompt."
+                    ><img
+                      src="./assets/images/windows/cmdShowing.png"
+                      class="figure-img img-fluid rounded border"
+                      alt="Windows search for cmd showing Command Prompt as the best match."
+                      loading="lazy"
+                      decoding="async"
+                  /></a>
+                  <figcaption class="figure-caption">
+                    Search for cmd and open Command Prompt. Select the image to
+                    view it full size.
+                  </figcaption>
+                </figure>
+              </li>
+            </ol>
             <p>
-              <strong
-                ><strong>Ctrl + Alt + T</strong> does not open the
-                terminal</strong
-              ><br />Open the applications menu, search for
-              <strong>Terminal</strong>, and click it.
+              A black window opens with a line such as
+              <code>C:\Users\YourName&gt;</code>. This window is the Command
+              Prompt.
             </p>
-          </aside>
-        </div></template
-      ></template
+          </div>
+        </div>
+        <div v-if="app.platform === 'Mac'">
+          <div>
+            <h2>{{ app.getStep(stepNumber).title }}</h2>
+            <ol>
+              <li>
+                Press <strong>Command + Space</strong> to open Spotlight Search.
+                <figure
+                  v-if="app.platform === 'Mac'"
+                  class="figure d-block my-3"
+                >
+                  <a
+                    href="./assets/images/macos/keyboard.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open full-size image: Press Command + Space to open Spotlight."
+                  >
+                    <img
+                      src="./assets/images/macos/keyboard.png"
+                      class="figure-img img-fluid rounded border"
+                      alt="Mac keyboard with Command and Space highlighted."
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </a>
+                  <figcaption class="figure-caption">
+                    Press Command + Space to open Spotlight. Select the image to
+                    view it full size.
+                  </figcaption>
+                </figure>
+              </li>
+              <li>
+                Type <code>Terminal</code> and press <strong>Return</strong>.
+                <figure
+                  v-if="app.platform === 'Mac'"
+                  class="figure d-block my-3"
+                >
+                  <a
+                    href="./assets/images/macos/spotlightSearch.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open full-size image: Search for Terminal and press Return."
+                  >
+                    <img
+                      src="./assets/images/macos/spotlightSearch.png"
+                      class="figure-img img-fluid rounded border"
+                      alt="Spotlight Search showing Terminal as the first result."
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </a>
+                  <figcaption class="figure-caption">
+                    Search for Terminal and press Return. Select the image to
+                    view it full size.
+                  </figcaption>
+                </figure>
+              </li>
+            </ol>
+            <p>
+              A window opens with a line of text that ends in <code>%</code>.
+              This window is the terminal.
+            </p>
+          </div>
+        </div>
+        <div v-if="app.platform === 'Linux'">
+          <div>
+            <h2>{{ app.getStep(stepNumber).title }}</h2>
+            <p>Press <strong>Ctrl + Alt + T</strong>.</p>
+            <p>
+              A window opens with a line of text that ends in <code>$</code>.
+              This window is the terminal.
+            </p>
+            <aside
+              class="alert alert-info mt-3"
+              role="note"
+              aria-label="Troubleshooting"
+            >
+              <h3 class="h6">Troubleshooting</h3>
+              <p>
+                <strong
+                  ><strong>Ctrl + Alt + T</strong> does not open the
+                  terminal</strong
+                ><br />Open the applications menu, search for
+                <strong>Terminal</strong>, and click it.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </div></template
     >
 
     <template
@@ -280,10 +291,10 @@
           <li>
             Type the following command and press
             <strong
-              ><template
+              ><span
                 v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Enter</template
-              ><template v-if="app.platform === 'Mac'">Return</template></strong
+                >Enter</span
+              ><span v-if="app.platform === 'Mac'">Return</span></strong
             >:
             <div v-scope='CodeBlock({ code: "git --version" })'></div>
             <figure
@@ -331,13 +342,13 @@
           <li>
             Type the following command and press
             <strong
-              ><template
+              ><span
                 v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Enter</template
-              ><template v-if="app.platform === 'Mac'">Return</template></strong
+                >Enter</span
+              ><span v-if="app.platform === 'Mac'">Return</span></strong
             >:
-            <template v-if="app.platform === 'Windows'"
-              ><div v-scope='CodeBlock({ code: "py --version" })'></div>
+            <div v-if="app.platform === 'Windows'">
+              <div v-scope='CodeBlock({ code: "py --version" })'></div>
               <figure
                 v-if="app.platform === 'Windows'"
                 class="figure d-block my-3"
@@ -358,10 +369,11 @@
                   An example of Python version output. Select the image to view
                   it full size.
                 </figcaption>
-              </figure></template
-            ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
-              ><div v-scope='CodeBlock({ code: "python3 --version" })'></div
-            ></template>
+              </figure>
+            </div>
+            <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
+              <div v-scope='CodeBlock({ code: "python3 --version" })'></div>
+            </div>
             <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
               <a
                 href="./assets/images/macos/pythonVersion.png"
@@ -387,21 +399,18 @@
         <p>
           Each command should display a version number, such as
           <code
-            ><template v-if="app.platform === 'Windows'"
-              >git version 2.47.0.windows.1</template
-            ><template v-if="app.platform === 'Mac'"
-              >git version 2.39.5</template
-            ><template v-if="app.platform === 'Linux'"
-              >git version 2.43.0</template
+            ><span v-if="app.platform === 'Windows'"
+              >git version 2.47.0.windows.1</span
+            ><span v-if="app.platform === 'Mac'">git version 2.39.5</span
+            ><span v-if="app.platform === 'Linux'"
+              >git version 2.43.0</span
             ></code
           >
           or
           <code
-            ><template v-if="app.platform === 'Windows'">Python 3.13.0</template
-            ><template v-if="app.platform === 'Mac'">Python 3.9.6</template
-            ><template v-if="app.platform === 'Linux'"
-              >Python 3.12.3</template
-            ></code
+            ><span v-if="app.platform === 'Windows'">Python 3.13.0</span
+            ><span v-if="app.platform === 'Mac'">Python 3.9.6</span
+            ><span v-if="app.platform === 'Linux'">Python 3.12.3</span></code
           >.
         </p>
         <p
@@ -411,8 +420,8 @@
           Your username, computer name, and version numbers may differ from
           these examples.
         </p>
-        <template v-if="app.platform === 'Windows'"
-          ><aside
+        <div v-if="app.platform === 'Windows'">
+          <aside
             class="alert alert-info mt-3"
             role="note"
             aria-label="Troubleshooting"
@@ -439,9 +448,10 @@
               <strong>The Command Prompt stops responding</strong><br />Press
               <strong>Ctrl + C</strong> to stop the current command.
             </p>
-          </aside></template
-        ><template v-if="app.platform === 'Mac'"
-          ><aside
+          </aside>
+        </div>
+        <div v-if="app.platform === 'Mac'">
+          <aside
             class="alert alert-info mt-3"
             role="note"
             aria-label="Troubleshooting"
@@ -494,9 +504,10 @@
               <strong>The Terminal stops responding</strong><br />Press
               <strong>Control + C</strong> to stop the current command.
             </p>
-          </aside></template
-        ><template v-if="app.platform === 'Linux'"
-          ><aside
+          </aside>
+        </div>
+        <div v-if="app.platform === 'Linux'">
+          <aside
             class="alert alert-info mt-3"
             role="note"
             aria-label="Troubleshooting"
@@ -514,8 +525,8 @@
               <strong>The terminal stops responding</strong><br />Press
               <strong>Ctrl + C</strong> to stop the current command.
             </p>
-          </aside></template
-        >
+          </aside>
+        </div>
       </div></template
     >
 
@@ -529,19 +540,17 @@
         <p>
           Type the following command and press
           <strong
-            ><template
-              v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-              >Enter</template
-            ><template v-if="app.platform === 'Mac'">Return</template></strong
+            ><span v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+              >Enter</span
+            ><span v-if="app.platform === 'Mac'">Return</span></strong
           >:
         </p>
-        <template v-if="app.platform === 'Windows'"
-          ><div
-            v-scope='CodeBlock({ code: "cd %USERPROFILE%" })'
-          ></div></template
-        ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
-          ><div v-scope='CodeBlock({ code: "cd ~" })'></div
-        ></template>
+        <div v-if="app.platform === 'Windows'">
+          <div v-scope='CodeBlock({ code: "cd %USERPROFILE%" })'></div>
+        </div>
+        <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
+          <div v-scope='CodeBlock({ code: "cd ~" })'></div>
+        </div>
         <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
           <a
             href="./assets/images/macos/cdHome.png"
@@ -588,21 +597,19 @@
           <h3 class="h6">Troubleshooting</h3>
           <p>
             <strong
-              ><template v-if="app.platform === 'Windows'"
-                >The Command Prompt stops responding</template
-              ><template v-if="app.platform === 'Mac'"
-                >The Terminal stops responding</template
-              ><template v-if="app.platform === 'Linux'"
-                >The terminal stops responding</template
+              ><span v-if="app.platform === 'Windows'"
+                >The Command Prompt stops responding</span
+              ><span v-if="app.platform === 'Mac'"
+                >The Terminal stops responding</span
+              ><span v-if="app.platform === 'Linux'"
+                >The terminal stops responding</span
               ></strong
             ><br />Press
             <strong
-              ><template
+              ><span
                 v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Ctrl + C</template
-              ><template v-if="app.platform === 'Mac'"
-                >Control + C</template
-              ></strong
+                >Ctrl + C</span
+              ><span v-if="app.platform === 'Mac'">Control + C</span></strong
             >
             to stop the current command.
           </p>
@@ -620,10 +627,9 @@
         <p>
           Type the following command and press
           <strong
-            ><template
-              v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-              >Enter</template
-            ><template v-if="app.platform === 'Mac'">Return</template></strong
+            ><span v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+              >Enter</span
+            ><span v-if="app.platform === 'Mac'">Return</span></strong
           >:
         </p>
         <div
@@ -685,21 +691,19 @@
           </p>
           <p>
             <strong
-              ><template v-if="app.platform === 'Windows'"
-                >The Command Prompt stops responding</template
-              ><template v-if="app.platform === 'Mac'"
-                >The Terminal stops responding</template
-              ><template v-if="app.platform === 'Linux'"
-                >The terminal stops responding</template
+              ><span v-if="app.platform === 'Windows'"
+                >The Command Prompt stops responding</span
+              ><span v-if="app.platform === 'Mac'"
+                >The Terminal stops responding</span
+              ><span v-if="app.platform === 'Linux'"
+                >The terminal stops responding</span
               ></strong
             ><br />Press
             <strong
-              ><template
+              ><span
                 v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Ctrl + C</template
-              ><template v-if="app.platform === 'Mac'"
-                >Control + C</template
-              ></strong
+                >Ctrl + C</span
+              ><span v-if="app.platform === 'Mac'">Control + C</span></strong
             >
             to stop the current command.
           </p>
@@ -717,10 +721,9 @@
         <p>
           Type the following command and press
           <strong
-            ><template
-              v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-              >Enter</template
-            ><template v-if="app.platform === 'Mac'">Return</template></strong
+            ><span v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+              >Enter</span
+            ><span v-if="app.platform === 'Mac'">Return</span></strong
           >:
         </p>
         <div v-scope='CodeBlock({ code: "cd wrtg-316-instructions" })'></div>
@@ -770,21 +773,19 @@
           <h3 class="h6">Troubleshooting</h3>
           <p>
             <strong
-              ><template v-if="app.platform === 'Windows'"
-                >The Command Prompt stops responding</template
-              ><template v-if="app.platform === 'Mac'"
-                >The Terminal stops responding</template
-              ><template v-if="app.platform === 'Linux'"
-                >The terminal stops responding</template
+              ><span v-if="app.platform === 'Windows'"
+                >The Command Prompt stops responding</span
+              ><span v-if="app.platform === 'Mac'"
+                >The Terminal stops responding</span
+              ><span v-if="app.platform === 'Linux'"
+                >The terminal stops responding</span
               ></strong
             ><br />Press
             <strong
-              ><template
+              ><span
                 v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Ctrl + C</template
-              ><template v-if="app.platform === 'Mac'"
-                >Control + C</template
-              ></strong
+                >Ctrl + C</span
+              ><span v-if="app.platform === 'Mac'">Control + C</span></strong
             >
             to stop the current command.
           </p>
@@ -802,17 +803,17 @@
         <p>
           Type the following command and press
           <strong
-            ><template
-              v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-              >Enter</template
-            ><template v-if="app.platform === 'Mac'">Return</template></strong
+            ><span v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+              >Enter</span
+            ><span v-if="app.platform === 'Mac'">Return</span></strong
           >:
         </p>
-        <template v-if="app.platform === 'Windows'"
-          ><div v-scope='CodeBlock({ code: "dir" })'></div></template
-        ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
-          ><div v-scope='CodeBlock({ code: "ls" })'></div
-        ></template>
+        <div v-if="app.platform === 'Windows'">
+          <div v-scope='CodeBlock({ code: "dir" })'></div>
+        </div>
+        <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
+          <div v-scope='CodeBlock({ code: "ls" })'></div>
+        </div>
         <p>The file <code>dino.py</code> should appear in the list.</p>
         <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
           <a
@@ -860,21 +861,19 @@
           <h3 class="h6">Troubleshooting</h3>
           <p>
             <strong
-              ><template v-if="app.platform === 'Windows'"
-                >The Command Prompt stops responding</template
-              ><template v-if="app.platform === 'Mac'"
-                >The Terminal stops responding</template
-              ><template v-if="app.platform === 'Linux'"
-                >The terminal stops responding</template
+              ><span v-if="app.platform === 'Windows'"
+                >The Command Prompt stops responding</span
+              ><span v-if="app.platform === 'Mac'"
+                >The Terminal stops responding</span
+              ><span v-if="app.platform === 'Linux'"
+                >The terminal stops responding</span
               ></strong
             ><br />Press
             <strong
-              ><template
+              ><span
                 v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Ctrl + C</template
-              ><template v-if="app.platform === 'Mac'"
-                >Control + C</template
-              ></strong
+                >Ctrl + C</span
+              ><span v-if="app.platform === 'Mac'">Control + C</span></strong
             >
             to stop the current command.
           </p>
@@ -889,23 +888,25 @@
       data-title-linux="Step 7: Maximize the Terminal Window"
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
-        <template v-if="app.platform === 'Windows'"
-          ><p>
+        <div v-if="app.platform === 'Windows'">
+          <p>
             Click the <strong>Maximize</strong> button (the square in the
             upper-right corner of the window). The game needs space to display
             correctly.
-          </p></template
-        ><template v-if="app.platform === 'Mac'"
-          ><p>
+          </p>
+        </div>
+        <div v-if="app.platform === 'Mac'">
+          <p>
             Double-click the title bar at the top of the Terminal window to
             enlarge it. The game needs space to display correctly.
-          </p></template
-        ><template v-if="app.platform === 'Linux'"
-          ><p>
+          </p>
+        </div>
+        <div v-if="app.platform === 'Linux'">
+          <p>
             Double-click the title bar at the top of the terminal window to
             maximize it. The game needs space to display correctly.
-          </p></template
-        >
+          </p>
+        </div>
         <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
           <a
             href="./assets/images/macos/enlarge.png"
@@ -939,17 +940,17 @@
         <p>
           Type the following command and press
           <strong
-            ><template
-              v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-              >Enter</template
-            ><template v-if="app.platform === 'Mac'">Return</template></strong
+            ><span v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+              >Enter</span
+            ><span v-if="app.platform === 'Mac'">Return</span></strong
           >:
         </p>
-        <template v-if="app.platform === 'Windows'"
-          ><div v-scope='CodeBlock({ code: "py dino.py" })'></div></template
-        ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
-          ><div v-scope='CodeBlock({ code: "python3 dino.py" })'></div
-        ></template>
+        <div v-if="app.platform === 'Windows'">
+          <div v-scope='CodeBlock({ code: "py dino.py" })'></div>
+        </div>
+        <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
+          <div v-scope='CodeBlock({ code: "python3 dino.py" })'></div>
+        </div>
         <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
           <a
             href="./assets/images/macos/runGame.png"
@@ -971,12 +972,12 @@
           </figcaption>
         </figure>
         <p>
-          <template v-if="app.platform === 'Windows'"
-            >The dinosaur game appears in the Command Prompt window.</template
-          ><template v-if="app.platform === 'Mac'"
-            >The dinosaur game appears in the Terminal window.</template
-          ><template v-if="app.platform === 'Linux'"
-            >The dinosaur game appears in the terminal window.</template
+          <span v-if="app.platform === 'Windows'"
+            >The dinosaur game appears in the Command Prompt window.</span
+          ><span v-if="app.platform === 'Mac'"
+            >The dinosaur game appears in the Terminal window.</span
+          ><span v-if="app.platform === 'Linux'"
+            >The dinosaur game appears in the terminal window.</span
           >
         </p>
         <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
@@ -1017,8 +1018,8 @@
             view it full size.
           </figcaption>
         </figure>
-        <template v-if="app.platform === 'Windows'"
-          ><aside
+        <div v-if="app.platform === 'Windows'">
+          <aside
             class="alert alert-info mt-3"
             role="note"
             aria-label="Troubleshooting"
@@ -1075,9 +1076,10 @@
               <strong>The Command Prompt stops responding</strong><br />Press
               <strong>Ctrl + C</strong> to stop the current command.
             </p>
-          </aside></template
-        ><template v-if="app.platform === 'Mac'"
-          ><aside
+          </aside>
+        </div>
+        <div v-if="app.platform === 'Mac'">
+          <aside
             class="alert alert-info mt-3"
             role="note"
             aria-label="Troubleshooting"
@@ -1097,9 +1099,10 @@
               <strong>The Terminal stops responding</strong><br />Press
               <strong>Control + C</strong> to stop the current command.
             </p>
-          </aside></template
-        ><template v-if="app.platform === 'Linux'"
-          ><aside
+          </aside>
+        </div>
+        <div v-if="app.platform === 'Linux'">
+          <aside
             class="alert alert-info mt-3"
             role="note"
             aria-label="Troubleshooting"
@@ -1119,8 +1122,8 @@
               <strong>The terminal stops responding</strong><br />Press
               <strong>Ctrl + C</strong> to stop the current command.
             </p>
-          </aside></template
-        >
+          </aside>
+        </div>
       </div></template
     >
 
@@ -1163,13 +1166,13 @@
         </div>
         <p>
           Press <strong>Q</strong> to quit when your done playing.
-          <template v-if="app.platform === 'Windows'">
-            The normal Command Prompt window returns. </template
-          ><template v-if="app.platform === 'Mac'">
-            The normal Terminal window returns. </template
-          ><template v-if="app.platform === 'Linux'">
+          <span v-if="app.platform === 'Windows'">
+            The normal Command Prompt window returns. </span
+          ><span v-if="app.platform === 'Mac'">
+            The normal Terminal window returns. </span
+          ><span v-if="app.platform === 'Linux'">
             The normal terminal window returns.
-          </template>
+          </span>
         </p>
         <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
           <a
@@ -1198,14 +1201,14 @@
         >
           <h3 class="h6">Troubleshooting</h3>
           <p>
-            <strong>The keys do nothing</strong><br /><template
+            <strong>The keys do nothing</strong><br /><span
               v-if="app.platform === 'Windows'"
-              >Click inside the Command Prompt window, then try again. </template
-            ><template v-if="app.platform === 'Mac'"
-              >Click inside the Terminal window, then try again. </template
-            ><template v-if="app.platform === 'Linux'"
+              >Click inside the Command Prompt window, then try again. </span
+            ><span v-if="app.platform === 'Mac'"
+              >Click inside the Terminal window, then try again. </span
+            ><span v-if="app.platform === 'Linux'"
               >Click inside the terminal window, then try again.
-            </template>
+            </span>
           </p>
         </aside>
       </div></template
