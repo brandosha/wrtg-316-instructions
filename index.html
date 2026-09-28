@@ -92,7 +92,12 @@
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
         <p>
-          These instructions will walk you through the steps to download a game from a website called GitHub which is a popular website that software developers use to post their code to. GitHub is a lot like Google Docs but made specifically for people to work on code together. In these instructions you will open GitHub, download a program for a simple game, and run that game on your own computer.
+          These instructions will walk you through the steps to download a game
+          from a website called GitHub which is a popular website that software
+          developers use to post their code to. GitHub is a lot like Google Docs
+          but made specifically for people to work on code together. In these
+          instructions you will open GitHub, download a program for a simple
+          game, and run that game on your own computer.
         </p>
         <p>
           Select your operating system above, then choose
@@ -143,9 +148,49 @@
           <ol>
             <li>
               Press <strong>Command + Space</strong> to open Spotlight Search.
+              <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+                <a
+                  href="./assets/images/macos/keyboard.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open full-size image: Press Command + Space to open Spotlight."
+                >
+                  <img
+                    src="./assets/images/macos/keyboard.png"
+                    class="figure-img img-fluid rounded border"
+                    alt="Mac keyboard with Command and Space highlighted."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <figcaption class="figure-caption">
+                  Press Command + Space to open Spotlight. Select the image to
+                  view it full size.
+                </figcaption>
+              </figure>
             </li>
             <li>
               Type <code>Terminal</code> and press <strong>Return</strong>.
+              <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+                <a
+                  href="./assets/images/macos/spotlightSearch.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open full-size image: Search for Terminal and press Return."
+                >
+                  <img
+                    src="./assets/images/macos/spotlightSearch.png"
+                    class="figure-img img-fluid rounded border"
+                    alt="Spotlight Search showing Terminal as the first result."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <figcaption class="figure-caption">
+                  Search for Terminal and press Return. Select the image to view
+                  it full size.
+                </figcaption>
+              </figure>
             </li>
           </ol>
           <p>
@@ -196,6 +241,26 @@
               ><template v-if="app.platform === 'Mac'">Return</template></strong
             >:
             <div v-scope='CodeBlock({ code: "git --version" })'></div>
+            <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+              <a
+                href="./assets/images/macos/gitVersion.png"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open full-size image: An example of Git version output."
+              >
+                <img
+                  src="./assets/images/macos/gitVersion.png"
+                  class="figure-img img-fluid rounded border"
+                  alt="Terminal showing git --version and an installed Git version."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <figcaption class="figure-caption">
+                An example of Git version output. Select the image to view it
+                full size.
+              </figcaption>
+            </figure>
           </li>
           <li>
             Type the following command and press
@@ -212,6 +277,26 @@
             ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
               ><div v-scope='CodeBlock({ code: "python3 --version" })'></div
             ></template>
+            <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+              <a
+                href="./assets/images/macos/pythonVersion.png"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open full-size image: An example of Python version output."
+              >
+                <img
+                  src="./assets/images/macos/pythonVersion.png"
+                  class="figure-img img-fluid rounded border"
+                  alt="Terminal showing python3 --version and Python 3.11.5."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <figcaption class="figure-caption">
+                An example of Python version output. Select the image to view it
+                full size.
+              </figcaption>
+            </figure>
           </li>
         </ol>
         <p>
@@ -233,6 +318,10 @@
               >Python 3.12.3</template
             ></code
           >.
+        </p>
+        <p v-if="app.platform === 'Mac'" class="text-muted">
+          Your username, computer name, and version numbers may differ from
+          these examples.
         </p>
         <template v-if="app.platform === 'Windows'"
           ><aside
@@ -365,6 +454,26 @@
         ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
           ><div v-scope='CodeBlock({ code: "cd ~" })'></div
         ></template>
+        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+          <a
+            href="./assets/images/macos/cdHome.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: The cd ~ command returns you to your home folder."
+          >
+            <img
+              src="./assets/images/macos/cdHome.png"
+              class="figure-img img-fluid rounded border"
+              alt="Terminal showing cd ~ and a home-folder prompt."
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <figcaption class="figure-caption">
+            The cd ~ command returns you to your home folder. Select the image
+            to view it full size.
+          </figcaption>
+        </figure>
         <aside
           class="alert alert-info mt-3"
           role="note"
@@ -418,6 +527,26 @@
           Wait until the line <code>Receiving objects: 100%</code> appears and
           the cursor returns.
         </p>
+        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+          <a
+            href="./assets/images/macos/gitClone.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: The download is complete when the prompt returns."
+          >
+            <img
+              src="./assets/images/macos/gitClone.png"
+              class="figure-img img-fluid rounded border"
+              alt="Terminal showing the clone command and Receiving objects: 100%."
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <figcaption class="figure-caption">
+            The download is complete when the prompt returns. Select the image
+            to view it full size.
+          </figcaption>
+        </figure>
         <aside
           class="alert alert-info mt-3"
           role="note"
@@ -471,6 +600,26 @@
           >:
         </p>
         <div v-scope='CodeBlock({ code: "cd wrtg-316-instructions" })'></div>
+        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+          <a
+            href="./assets/images/macos/cdWriting.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: Open the downloaded program folder."
+          >
+            <img
+              src="./assets/images/macos/cdWriting.png"
+              class="figure-img img-fluid rounded border"
+              alt="Terminal showing cd wrtg-316-instructions and the updated folder prompt."
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <figcaption class="figure-caption">
+            Open the downloaded program folder. Select the image to view it full
+            size.
+          </figcaption>
+        </figure>
         <aside
           class="alert alert-info mt-3"
           role="note"
@@ -523,6 +672,26 @@
           ><div v-scope='CodeBlock({ code: "ls" })'></div
         ></template>
         <p>The file <code>dino.py</code> should appear in the list.</p>
+        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+          <a
+            href="./assets/images/macos/ls.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: Look for dino.py; other listed files may differ."
+          >
+            <img
+              src="./assets/images/macos/ls.png"
+              class="figure-img img-fluid rounded border"
+              alt="Terminal listing the program folder with dino.py highlighted."
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <figcaption class="figure-caption">
+            Look for dino.py; other listed files may differ. Select the image to
+            view it full size.
+          </figcaption>
+        </figure>
         <aside
           class="alert alert-info mt-3"
           role="note"
@@ -577,6 +746,26 @@
             maximize it. The game needs space to display correctly.
           </p></template
         >
+        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+          <a
+            href="./assets/images/macos/enlarge.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: An enlarged Terminal window gives the game room to display."
+          >
+            <img
+              src="./assets/images/macos/enlarge.png"
+              class="figure-img img-fluid rounded border"
+              alt="Terminal enlarged to fill the screen."
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <figcaption class="figure-caption">
+            An enlarged Terminal window gives the game room to display. Select
+            the image to view it full size.
+          </figcaption>
+        </figure>
       </div></template
     >
 
@@ -601,6 +790,26 @@
         ><template v-if="app.platform === 'Mac' || app.platform === 'Linux'"
           ><div v-scope='CodeBlock({ code: "python3 dino.py" })'></div
         ></template>
+        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+          <a
+            href="./assets/images/macos/runGame.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: Run python3 dino.py from the program folder."
+          >
+            <img
+              src="./assets/images/macos/runGame.png"
+              class="figure-img img-fluid rounded border"
+              alt="Terminal showing python3 dino.py entered in the program folder."
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <figcaption class="figure-caption">
+            Run python3 dino.py from the program folder. Select the image to
+            view it full size.
+          </figcaption>
+        </figure>
         <p>
           <template v-if="app.platform === 'Windows'"
             >The dinosaur game appears in the Command Prompt window.</template
@@ -610,6 +819,26 @@
             >The dinosaur game appears in the terminal window.</template
           >
         </p>
+        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+          <a
+            href="./assets/images/macos/gameShowing.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: The game start screen appears in Terminal."
+          >
+            <img
+              src="./assets/images/macos/gameShowing.png"
+              class="figure-img img-fluid rounded border"
+              alt="Dino Run start screen with the message Press SPACE to start."
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <figcaption class="figure-caption">
+            The game start screen appears in Terminal. Select the image to view
+            it full size.
+          </figcaption>
+        </figure>
         <template v-if="app.platform === 'Windows'"
           ><aside
             class="alert alert-info mt-3"
@@ -703,7 +932,9 @@
       data-title-linux="Step 9: Play the Game"
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
-        <p>Use the following keys to play:</p>
+        <p>
+          Press <strong>Space</strong> to start. Use the following keys to play:
+        </p>
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -732,8 +963,7 @@
           </table>
         </div>
         <p>
-          Press <strong>Q</strong
-          > to quit when your done playing.
+          Press <strong>Q</strong> to quit when your done playing.
           <template v-if="app.platform === 'Windows'">
             The normal Command Prompt window returns. </template
           ><template v-if="app.platform === 'Mac'">
@@ -742,6 +972,26 @@
             The normal terminal window returns.
           </template>
         </p>
+        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
+          <a
+            href="./assets/images/macos/gameRunning.gif"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size image: An example of the game in action."
+          >
+            <img
+              src="./assets/images/macos/gameRunning.gif"
+              class="figure-img img-fluid rounded border"
+              alt="Animated example of the dinosaur game running in Terminal."
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <figcaption class="figure-caption">
+            An example of the game in action. Select the image to view it full
+            size.
+          </figcaption>
+        </figure>
         <aside
           class="alert alert-info mt-3"
           role="note"
@@ -770,17 +1020,19 @@
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
         <p>
-          Congratulations! You have now accessed GitHub, downloaded a simple program, and ran it on your own computer. These are the steps that software developers do everyday to work on programs together. You now have a solid foundation to start accessing public programs and working on your own programs yourself.
+          Congratulations! You have now accessed GitHub, downloaded a simple
+          program, and ran it on your own computer. These are the steps that
+          software developers do everyday to work on programs together. You now
+          have a solid foundation to start accessing public programs and working
+          on your own programs yourself.
         </p>
         <h5>Survey</h5>
         <p>
-          Please take the time to fill out the survey below to let us know what we can improve about these instructions:
+          Please take the time to fill out the survey below to let us know what
+          we can improve about these instructions:
         </p>
         <p>
-          <a
-            :href="app.getformUrl()"
-            target="_blank"
-            rel="noopener noreferrer"
+          <a :href="app.getformUrl()" target="_blank" rel="noopener noreferrer"
             >Click here to take the survey</a
           >
         </p>
