@@ -3,8 +3,11 @@
 ### Step 1: Open the Command Prompt
 
 1. Click the **Start** button.
+   ![Windows Start button](images/startButton.png)
 2. Type `cmd`.
+   ![Command Prompt open](images/cmdShowing.png)
 3. Click **Command Prompt**.
+
 
 A black window opens with a line such as `C:\Users\YourName>`. This window is the Command Prompt.
 
@@ -14,11 +17,12 @@ A black window opens with a line such as `C:\Users\YourName>`. This window is th
    ```
    git --version
    ```
+   ![Git version on Windows](images/winGitVersion.png)
 2. Type the following command and press **Enter**:
    ```
    py --version
    ```
-
+   ![Python version on Windows](images/winPyVersion.png)
 Each command should display a version number, such as `git version 2.47.0.windows.1` or `Python 3.13.0`.
 
 ### Step 3: Install the Game's Display Tool
@@ -28,6 +32,7 @@ Windows needs one small add-on for the game to display in the Command Prompt. Ty
 ```
 py -m pip install windows-curses
 ```
+![Installing windows-curses](images/pipInstall.png)
 
 Wait until the line `Successfully installed windows-curses` appears.
 
@@ -38,6 +43,7 @@ Type the following command and press **Enter**:
 ```
 cd %USERPROFILE%
 ```
+![Moving to the Windows user folder](images/cdWindows.png)
 
 ### Step 5: Download (Clone) the Program
 
@@ -46,7 +52,7 @@ Type the following command and press **Enter**:
 ```
 git clone https://github.com/trevorwattles/wrtg-316-instructions.git
 ```
-
+![Cloning the repository on Windows](images/winGitClone.png)
 Wait until the line `Receiving objects: 100%` appears and the cursor returns.
 
 ### Step 6: Open the Program's Folder
@@ -56,6 +62,7 @@ Type the following command and press **Enter**:
 ```
 cd wrtg-316-instructions
 ```
+![Opening the program folder](images/winCdWriting.png)
 
 ### Step 7: Confirm That the Game File Is Present
 
@@ -64,7 +71,7 @@ Type the following command and press **Enter**:
 ```
 dir
 ```
-
+![Viewing the program files](images/dir.png)
 The file `dino.py` should appear in the list.
 
 ### Step 8: Maximize the Window
@@ -78,7 +85,7 @@ Type the following command and press **Enter**:
 ```
 py dino.py
 ```
-
+![Dinosaur game running on Windows](images/winGameShowing.png)
 The dinosaur game appears in the Command Prompt window.
 
 ### Step 10: Play the Game
@@ -90,6 +97,8 @@ Use the following keys to play:
 | **Space**, **W**, or **Up Arrow** | Jump   |
 | **S** or **Down Arrow**           | Duck   |
 | **P**                             | Pause  |
+
+![Dino game running](images/gameRunning.gif)
 
 ### Step 11: Quit the Game
 
