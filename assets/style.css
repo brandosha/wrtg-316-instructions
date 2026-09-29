@@ -9,3 +9,42 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
+.instruction-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1.25rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+/* v-if removes figures for other platforms, so give text the whole row. */
+.instruction-row:not(:has(.instruction-visual figure)) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.instruction-row:not(:has(.instruction-visual figure)) .instruction-visual {
+  display: none;
+}
+
+.instruction-copy,
+.instruction-visual {
+  min-width: 0;
+}
+
+.instruction-visual .figure {
+  width: 100%;
+  margin-top: 0 !important;
+}
+
+.instruction-visual img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1399.98px) {
+  .instruction-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

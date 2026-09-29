@@ -41,7 +41,7 @@
       </div>
 
       <div class="row">
-        <div class="col-12 col-sm-4 mb-4">
+        <div class="col-12 col-md-4 col-lg-3 mb-4">
           <div class="list-group">
             <a
               v-for="step in app.steps"
@@ -124,63 +124,75 @@
     >
 
     <template
-      id="step-1-template"
-      data-title-windows="Step 1: Open the Command Prompt"
-      data-title-mac="Step 1: Open the Terminal"
       data-title-linux="Step 1: Open the Terminal"
+      data-title-mac="Step 1: Open the Terminal"
+      data-title-windows="Step 1: Open the Command Prompt"
+      id="step-1-template"
       ><div>
         <div v-if="app.platform === 'Windows'">
           <div>
             <h2>{{ app.getStep(stepNumber).title }}</h2>
             <ol>
               <li>
-                Click the <strong>Start</strong> button.
-                <figure
-                  v-if="app.platform === 'Windows'"
-                  class="figure d-block my-3"
-                >
-                  <a
-                    href="./assets/images/windows/startButton.png"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open full-size image: Click the Start button."
-                    ><img
-                      src="./assets/images/windows/startButton.png"
-                      class="figure-img img-fluid rounded border"
-                      alt="Windows Start menu with an arrow pointing to the Start button."
-                      loading="lazy"
-                      decoding="async"
-                  /></a>
-                  <figcaption class="figure-caption">
-                    Click the Start button. Select the image to view it full
-                    size.
-                  </figcaption>
-                </figure>
+                <div class="instruction-row">
+                  <div class="instruction-copy">
+                    Click the <strong>Start</strong> button.
+                  </div>
+                  <div class="instruction-visual">
+                    <figure
+                      class="figure d-block my-3"
+                      v-if="app.platform === 'Windows'"
+                    >
+                      <a
+                        aria-label="Open full-size image: Click the Start button."
+                        href="./assets/images/windows/startButton.png"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        ><img
+                          alt="Windows Start menu with an arrow pointing to the Start button."
+                          class="figure-img img-fluid rounded border"
+                          decoding="async"
+                          loading="lazy"
+                          src="./assets/images/windows/startButton.png"
+                      /></a>
+                      <figcaption class="figure-caption">
+                        Click the Start button. Select the image to view it full
+                        size.
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
               </li>
               <li>Type <code>cmd</code>.</li>
               <li>
-                Click <strong>Command Prompt</strong>.
-                <figure
-                  v-if="app.platform === 'Windows'"
-                  class="figure d-block my-3"
-                >
-                  <a
-                    href="./assets/images/windows/cmdShowing.png"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open full-size image: Search for cmd and open Command Prompt."
-                    ><img
-                      src="./assets/images/windows/cmdShowing.png"
-                      class="figure-img img-fluid rounded border"
-                      alt="Windows search for cmd showing Command Prompt as the best match."
-                      loading="lazy"
-                      decoding="async"
-                  /></a>
-                  <figcaption class="figure-caption">
-                    Search for cmd and open Command Prompt. Select the image to
-                    view it full size.
-                  </figcaption>
-                </figure>
+                <div class="instruction-row">
+                  <div class="instruction-copy">
+                    Click <strong>Command Prompt</strong>.
+                  </div>
+                  <div class="instruction-visual">
+                    <figure
+                      class="figure d-block my-3"
+                      v-if="app.platform === 'Windows'"
+                    >
+                      <a
+                        aria-label="Open full-size image: Search for cmd and open Command Prompt."
+                        href="./assets/images/windows/cmdShowing.png"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        ><img
+                          alt="Windows search for cmd showing Command Prompt as the best match."
+                          class="figure-img img-fluid rounded border"
+                          decoding="async"
+                          loading="lazy"
+                          src="./assets/images/windows/cmdShowing.png"
+                      /></a>
+                      <figcaption class="figure-caption">
+                        Search for cmd and open Command Prompt. Select the image
+                        to view it full size.
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
               </li>
             </ol>
             <p>
@@ -188,6 +200,16 @@
               <code>C:\Users\YourName&gt;</code>. This window is the Command
               Prompt.
             </p>
+            <aside class="alert alert-secondary mt-3" role="note">
+              <p class="mb-0">
+                <strong>Note:</strong> the terminal/command prompt is known as a
+                Command Line Interface (CLI). It is a way of interacting with
+                your computer in more powerful ways that the Graphical User
+                Interface (GUI) often doesn't allow. Typing commands into your
+                CLI executes actions on your computer such as creating files,
+                moving files, inspecting files, and many more actions.
+              </p>
+            </aside>
           </div>
         </div>
         <div v-if="app.platform === 'Mac'">
@@ -195,62 +217,86 @@
             <h2>{{ app.getStep(stepNumber).title }}</h2>
             <ol>
               <li>
-                Press <strong>Command + Space</strong> to open Spotlight Search.
-                <figure
-                  v-if="app.platform === 'Mac'"
-                  class="figure d-block my-3"
-                >
-                  <a
-                    href="./assets/images/macos/keyboard.png"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open full-size image: Press Command + Space to open Spotlight."
-                  >
-                    <img
-                      src="./assets/images/macos/keyboard.png"
-                      class="figure-img img-fluid rounded border"
-                      alt="Mac keyboard with Command and Space highlighted."
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </a>
-                  <figcaption class="figure-caption">
-                    Press Command + Space to open Spotlight. Select the image to
-                    view it full size.
-                  </figcaption>
-                </figure>
+                <div class="instruction-row">
+                  <div class="instruction-copy">
+                    Press <strong>Command + Space</strong> to open Spotlight
+                    Search.
+                  </div>
+                  <div class="instruction-visual">
+                    <figure
+                      class="figure d-block my-3"
+                      v-if="app.platform === 'Mac'"
+                    >
+                      <a
+                        aria-label="Open full-size image: Press Command + Space to open Spotlight."
+                        href="./assets/images/macos/keyboard.png"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <img
+                          alt="Mac keyboard with Command and Space highlighted."
+                          class="figure-img img-fluid rounded border"
+                          decoding="async"
+                          loading="lazy"
+                          src="./assets/images/macos/keyboard.png"
+                        />
+                      </a>
+                      <figcaption class="figure-caption">
+                        Press Command + Space to open Spotlight. Select the
+                        image to view it full size.
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
               </li>
               <li>
-                Type <code>Terminal</code> and press <strong>Return</strong>.
-                <figure
-                  v-if="app.platform === 'Mac'"
-                  class="figure d-block my-3"
-                >
-                  <a
-                    href="./assets/images/macos/spotlightSearch.png"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open full-size image: Search for Terminal and press Return."
-                  >
-                    <img
-                      src="./assets/images/macos/spotlightSearch.png"
-                      class="figure-img img-fluid rounded border"
-                      alt="Spotlight Search showing Terminal as the first result."
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </a>
-                  <figcaption class="figure-caption">
-                    Search for Terminal and press Return. Select the image to
-                    view it full size.
-                  </figcaption>
-                </figure>
+                <div class="instruction-row">
+                  <div class="instruction-copy">
+                    Type <code>Terminal</code> and press
+                    <strong>Return</strong>.
+                  </div>
+                  <div class="instruction-visual">
+                    <figure
+                      class="figure d-block my-3"
+                      v-if="app.platform === 'Mac'"
+                    >
+                      <a
+                        aria-label="Open full-size image: Search for Terminal and press Return."
+                        href="./assets/images/macos/spotlightSearch.png"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <img
+                          alt="Spotlight Search showing Terminal as the first result."
+                          class="figure-img img-fluid rounded border"
+                          decoding="async"
+                          loading="lazy"
+                          src="./assets/images/macos/spotlightSearch.png"
+                        />
+                      </a>
+                      <figcaption class="figure-caption">
+                        Search for Terminal and press Return. Select the image
+                        to view it full size.
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
               </li>
             </ol>
             <p>
               A window opens with a line of text that ends in <code>%</code>.
               This window is the terminal.
             </p>
+            <aside class="alert alert-secondary mt-3" role="note">
+              <p class="mb-0">
+                <strong>Note:</strong> the terminal/command prompt is known as a
+                Command Line Interface (CLI). It is a way of interacting with
+                your computer in more powerful ways that the Graphical User
+                Interface (GUI) often doesn't allow. Typing commands into your
+                CLI executes actions on your computer such as creating files,
+                moving files, inspecting files, and many more actions.
+              </p>
+            </aside>
           </div>
         </div>
         <div v-if="app.platform === 'Linux'">
@@ -261,10 +307,20 @@
               A window opens with a line of text that ends in <code>$</code>.
               This window is the terminal.
             </p>
+            <aside class="alert alert-secondary mt-3" role="note">
+              <p class="mb-0">
+                <strong>Note:</strong> the terminal/command prompt is known as a
+                Command Line Interface (CLI). It is a way of interacting with
+                your computer in more powerful ways that the Graphical User
+                Interface (GUI) often doesn't allow. Typing commands into your
+                CLI executes actions on your computer such as creating files,
+                moving files, inspecting files, and many more actions.
+              </p>
+            </aside>
             <aside
-              class="alert alert-info mt-3"
-              role="note"
               aria-label="Troubleshooting"
+              class="alert alert-warning mt-3"
+              role="note"
             >
               <h3 class="h6">Troubleshooting</h3>
               <p>
@@ -281,119 +337,171 @@
     >
 
     <template
-      id="step-2-template"
-      data-title-windows="Step 2: Confirm That Git and Python Are Installed"
-      data-title-mac="Step 2: Confirm That Git and Python Are Installed"
       data-title-linux="Step 2: Confirm That Git and Python Are Installed"
+      data-title-mac="Step 2: Confirm That Git and Python Are Installed"
+      data-title-windows="Step 2: Confirm That Git and Python Are Installed"
+      id="step-2-template"
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
         <ol>
           <li>
-            Type the following command and press
-            <strong
-              ><span
-                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Enter</span
-              ><span v-if="app.platform === 'Mac'">Return</span></strong
-            >:
-            <div v-scope='CodeBlock({ code: "git --version" })'></div>
-            <figure
-              v-if="app.platform === 'Windows'"
-              class="figure d-block my-3"
-            >
-              <a
-                href="./assets/images/windows/winGitVersion.png"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open full-size image: An example of Git version output."
-                ><img
-                  src="./assets/images/windows/winGitVersion.png"
-                  class="figure-img img-fluid rounded border"
-                  alt="Command Prompt showing git --version and a Git version number."
-                  loading="lazy"
-                  decoding="async"
-              /></a>
-              <figcaption class="figure-caption">
-                An example of Git version output. Select the image to view it
-                full size.
-              </figcaption>
-            </figure>
-            <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-              <a
-                href="./assets/images/macos/gitVersion.png"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open full-size image: An example of Git version output."
-              >
-                <img
-                  src="./assets/images/macos/gitVersion.png"
-                  class="figure-img img-fluid rounded border"
-                  alt="Terminal showing git --version and an installed Git version."
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-              <figcaption class="figure-caption">
-                An example of Git version output. Select the image to view it
-                full size.
-              </figcaption>
-            </figure>
+            <div class="instruction-row">
+              <div class="instruction-copy">
+                Type the following command and press
+                <strong
+                  ><span
+                    v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                    >Enter</span
+                  ><span v-if="app.platform === 'Mac'">Return</span></strong
+                >:
+                <div v-scope='CodeBlock({ code: "git --version" })'></div>
+                <aside class="alert alert-secondary mt-3" role="note">
+                  <p class="mb-0">
+                    <strong>Note:</strong> --version is a command that tells you
+                    what version of a program you have. The output of git
+                    --version tells you what version of the software called git
+                    is currently installed on your computer
+                  </p>
+                </aside>
+              </div>
+              <div class="instruction-visual">
+                <figure
+                  class="figure d-block my-3"
+                  v-if="app.platform === 'Windows'"
+                >
+                  <a
+                    aria-label="Open full-size image: An example of Git version output."
+                    href="./assets/images/windows/winGitVersion.png"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    ><img
+                      alt="Command Prompt showing git --version and a Git version number."
+                      class="figure-img img-fluid rounded border"
+                      decoding="async"
+                      loading="lazy"
+                      src="./assets/images/windows/winGitVersion.png"
+                  /></a>
+                  <figcaption class="figure-caption">
+                    An example of Git version output. Select the image to view
+                    it full size.
+                  </figcaption>
+                </figure>
+                <figure
+                  class="figure d-block my-3"
+                  v-if="app.platform === 'Mac'"
+                >
+                  <a
+                    aria-label="Open full-size image: An example of Git version output."
+                    href="./assets/images/macos/gitVersion.png"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <img
+                      alt="Terminal showing git --version and an installed Git version."
+                      class="figure-img img-fluid rounded border"
+                      decoding="async"
+                      loading="lazy"
+                      src="./assets/images/macos/gitVersion.png"
+                    />
+                  </a>
+                  <figcaption class="figure-caption">
+                    An example of Git version output. Select the image to view
+                    it full size.
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
           </li>
           <li>
-            Type the following command and press
-            <strong
-              ><span
-                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Enter</span
-              ><span v-if="app.platform === 'Mac'">Return</span></strong
-            >:
-            <div v-if="app.platform === 'Windows'">
-              <div v-scope='CodeBlock({ code: "py --version" })'></div>
-              <figure
-                v-if="app.platform === 'Windows'"
-                class="figure d-block my-3"
-              >
-                <a
-                  href="./assets/images/windows/winPyVersion.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open full-size image: An example of Python version output."
-                  ><img
-                    src="./assets/images/windows/winPyVersion.png"
-                    class="figure-img img-fluid rounded border"
-                    alt="Command Prompt showing py --version and Python 3.14.3."
-                    loading="lazy"
-                    decoding="async"
-                /></a>
-                <figcaption class="figure-caption">
-                  An example of Python version output. Select the image to view
-                  it full size.
-                </figcaption>
-              </figure>
+            <div class="instruction-row">
+              <div class="instruction-copy">
+                Type the following command and press
+                <strong
+                  ><span
+                    v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                    >Enter</span
+                  ><span v-if="app.platform === 'Mac'">Return</span></strong
+                >:
+                <div v-if="app.platform === 'Windows'">
+                  <div v-scope='CodeBlock({ code: "py --version" })'></div>
+                  <aside
+                    class="alert alert-secondary mt-3"
+                    role="note"
+                    v-if="app.platform === 'Windows'"
+                  >
+                    <p class="mb-0">
+                      <strong>Note:</strong> py is a command that allows us to
+                      run a file that is written in a coding language called
+                      python. By putting the name of a python file after it
+                      (e.g. <a href="http://dino.py/">dino.py</a>) it runs that
+                      code on your computer.
+                    </p>
+                  </aside>
+                </div>
+                <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
+                  <div v-scope='CodeBlock({ code: "python3 --version" })'></div>
+                  <aside
+                    class="alert alert-secondary mt-3"
+                    role="note"
+                    v-if="app.platform === 'Mac' || app.platform === 'Linux'"
+                  >
+                    <p class="mb-0">
+                      <strong>Note:</strong> python3 is a command that allows us
+                      to run a file that is written in a coding language called
+                      python. By putting the name of a python file after it
+                      (e.g. <a href="http://dino.py/">dino.py</a>) it runs that
+                      code on your computer.
+                    </p>
+                  </aside>
+                </div>
+              </div>
+              <div class="instruction-visual">
+                <figure
+                  class="figure d-block my-3"
+                  v-if="app.platform === 'Windows'"
+                >
+                  <a
+                    aria-label="Open full-size image: An example of Python version output."
+                    href="./assets/images/windows/winPyVersion.png"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    ><img
+                      alt="Command Prompt showing py --version and Python 3.14.3."
+                      class="figure-img img-fluid rounded border"
+                      decoding="async"
+                      loading="lazy"
+                      src="./assets/images/windows/winPyVersion.png"
+                  /></a>
+                  <figcaption class="figure-caption">
+                    An example of Python version output. Select the image to
+                    view it full size.
+                  </figcaption>
+                </figure>
+                <figure
+                  class="figure d-block my-3"
+                  v-if="app.platform === 'Mac'"
+                >
+                  <a
+                    aria-label="Open full-size image: An example of Python version output."
+                    href="./assets/images/macos/pythonVersion.png"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <img
+                      alt="Terminal showing python3 --version and Python 3.11.5."
+                      class="figure-img img-fluid rounded border"
+                      decoding="async"
+                      loading="lazy"
+                      src="./assets/images/macos/pythonVersion.png"
+                    />
+                  </a>
+                  <figcaption class="figure-caption">
+                    An example of Python version output. Select the image to
+                    view it full size.
+                  </figcaption>
+                </figure>
+              </div>
             </div>
-            <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
-              <div v-scope='CodeBlock({ code: "python3 --version" })'></div>
-            </div>
-            <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-              <a
-                href="./assets/images/macos/pythonVersion.png"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open full-size image: An example of Python version output."
-              >
-                <img
-                  src="./assets/images/macos/pythonVersion.png"
-                  class="figure-img img-fluid rounded border"
-                  alt="Terminal showing python3 --version and Python 3.11.5."
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-              <figcaption class="figure-caption">
-                An example of Python version output. Select the image to view it
-                full size.
-              </figcaption>
-            </figure>
           </li>
         </ol>
         <p>
@@ -414,17 +522,17 @@
           >.
         </p>
         <p
-          v-if="app.platform === 'Mac' || app.platform === 'Windows'"
           class="text-muted"
+          v-if="app.platform === 'Mac' || app.platform === 'Windows'"
         >
           Your username, computer name, and version numbers may differ from
           these examples.
         </p>
         <div v-if="app.platform === 'Windows'">
           <aside
-            class="alert alert-info mt-3"
-            role="note"
             aria-label="Troubleshooting"
+            class="alert alert-warning mt-3"
+            role="note"
           >
             <h3 class="h6">Troubleshooting</h3>
             <p>
@@ -452,9 +560,9 @@
         </div>
         <div v-if="app.platform === 'Mac'">
           <aside
-            class="alert alert-info mt-3"
-            role="note"
             aria-label="Troubleshooting"
+            class="alert alert-warning mt-3"
+            role="note"
           >
             <h3 class="h6">Troubleshooting</h3>
             <p>
@@ -463,8 +571,8 @@
               Download and install Python from
               <a
                 href="https://www.python.org/downloads/macos/"
-                target="_blank"
                 rel="noopener noreferrer"
+                target="_blank"
                 >the Python download site</a
               >. Close and reopen Terminal, then run
               <code>python3 --version</code> again.
@@ -479,8 +587,8 @@
                 instructions at
                 <a
                   href="https://brew.sh/"
-                  target="_blank"
                   rel="noopener noreferrer"
+                  target="_blank"
                   >brew.sh</a
                 >. Follow the installer's <strong>Next steps</strong> to make
                 the <code>brew</code> command available in Terminal.
@@ -508,9 +616,9 @@
         </div>
         <div v-if="app.platform === 'Linux'">
           <aside
-            class="alert alert-info mt-3"
-            role="note"
             aria-label="Troubleshooting"
+            class="alert alert-warning mt-3"
+            role="note"
           >
             <h3 class="h6">Troubleshooting</h3>
             <p>
@@ -531,68 +639,106 @@
     >
 
     <template
-      id="step-3-template"
-      data-title-windows="Step 3: Move to Your User Folder"
-      data-title-mac="Step 3: Move to Your Home Folder"
       data-title-linux="Step 3: Move to Your Home Folder"
+      data-title-mac="Step 3: Move to Your Home Folder"
+      data-title-windows="Step 3: Move to Your User Folder"
+      id="step-3-template"
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
-        <p>
-          Type the following command and press
-          <strong
-            ><span v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-              >Enter</span
-            ><span v-if="app.platform === 'Mac'">Return</span></strong
-          >:
-        </p>
-        <div v-if="app.platform === 'Windows'">
-          <div v-scope='CodeBlock({ code: "cd %USERPROFILE%" })'></div>
+        <div class="instruction-row">
+          <div class="instruction-copy">
+            <p>
+              Type the following command and press
+              <strong
+                ><span
+                  v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                  >Enter</span
+                ><span v-if="app.platform === 'Mac'">Return</span></strong
+              >:
+            </p>
+            <div v-if="app.platform === 'Windows'">
+              <div v-scope='CodeBlock({ code: "cd %USERPROFILE%" })'></div>
+              <aside
+                class="alert alert-secondary mt-3"
+                role="note"
+                v-if="app.platform === 'Windows'"
+              >
+                <p class="mb-0">
+                  <strong>Note:</strong> cd stands for change directory.
+                  Directory is another name for a folder. Using the cd command
+                  in the terminal is the command line version of opening a
+                  different folder in your finder window using the computer
+                  normally
+                </p>
+              </aside>
+            </div>
+            <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
+              <div v-scope='CodeBlock({ code: "cd ~" })'></div>
+              <aside
+                class="alert alert-secondary mt-3"
+                role="note"
+                v-if="app.platform === 'Mac' || app.platform === 'Linux'"
+              >
+                <p class="mb-0">
+                  <strong>Note:</strong> cd stands for change directory.
+                  Directory is another name for a folder. Using the cd command
+                  in the terminal is the command line version of opening a
+                  different folder in your finder window using the computer
+                  normally
+                </p>
+              </aside>
+            </div>
+          </div>
+          <div class="instruction-visual">
+            <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
+              <a
+                aria-label="Open full-size image: The cd ~ command returns you to your home folder."
+                href="./assets/images/macos/cdHome.png"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt="Terminal showing cd ~ and a home-folder prompt."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/macos/cdHome.png"
+                />
+              </a>
+              <figcaption class="figure-caption">
+                The cd ~ command returns you to your home folder. Select the
+                image to view it full size.
+              </figcaption>
+            </figure>
+            <figure
+              class="figure d-block my-3"
+              v-if="app.platform === 'Windows'"
+            >
+              <a
+                aria-label="Open full-size image: Use cd %USERPROFILE% to return to your user folder. Earlier commands shown are example history."
+                href="./assets/images/windows/cdWindows.png"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><img
+                  alt="Command Prompt showing cd %USERPROFILE% and the user-folder prompt."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/windows/cdWindows.png"
+              /></a>
+              <figcaption class="figure-caption">
+                Use cd %USERPROFILE% to return to your user folder. Earlier
+                commands shown are example history. Select the image to view it
+                full size.
+              </figcaption>
+            </figure>
+          </div>
         </div>
-        <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
-          <div v-scope='CodeBlock({ code: "cd ~" })'></div>
-        </div>
-        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-          <a
-            href="./assets/images/macos/cdHome.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: The cd ~ command returns you to your home folder."
-          >
-            <img
-              src="./assets/images/macos/cdHome.png"
-              class="figure-img img-fluid rounded border"
-              alt="Terminal showing cd ~ and a home-folder prompt."
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-          <figcaption class="figure-caption">
-            The cd ~ command returns you to your home folder. Select the image
-            to view it full size.
-          </figcaption>
-        </figure>
-        <figure v-if="app.platform === 'Windows'" class="figure d-block my-3">
-          <a
-            href="./assets/images/windows/cdWindows.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: Use cd %USERPROFILE% to return to your user folder. Earlier commands shown are example history."
-            ><img
-              src="./assets/images/windows/cdWindows.png"
-              class="figure-img img-fluid rounded border"
-              alt="Command Prompt showing cd %USERPROFILE% and the user-folder prompt."
-              loading="lazy"
-              decoding="async"
-          /></a>
-          <figcaption class="figure-caption">
-            Use cd %USERPROFILE% to return to your user folder. Earlier commands
-            shown are example history. Select the image to view it full size.
-          </figcaption>
-        </figure>
+
         <aside
-          class="alert alert-info mt-3"
-          role="note"
           aria-label="Troubleshooting"
+          class="alert alert-warning mt-3"
+          role="note"
         >
           <h3 class="h6">Troubleshooting</h3>
           <p>
@@ -618,69 +764,89 @@
     >
 
     <template
-      id="step-4-template"
-      data-title-windows="Step 4: Download (Clone) the Program"
-      data-title-mac="Step 4: Download (Clone) the Program"
       data-title-linux="Step 4: Download (Clone) the Program"
+      data-title-mac="Step 4: Download (Clone) the Program"
+      data-title-windows="Step 4: Download (Clone) the Program"
+      id="step-4-template"
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
-        <p>
-          Type the following command and press
-          <strong
-            ><span v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-              >Enter</span
-            ><span v-if="app.platform === 'Mac'">Return</span></strong
-          >:
-        </p>
-        <div
-          v-scope='CodeBlock({ code: "git clone https://github.com/trevorwattles/wrtg-316-instructions.git" })'
-        ></div>
-        <p>
-          Wait until the line <code>Receiving objects: 100%</code> appears and
-          the cursor returns.
-        </p>
-        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-          <a
-            href="./assets/images/macos/gitClone.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: The download is complete when the prompt returns."
-          >
-            <img
-              src="./assets/images/macos/gitClone.png"
-              class="figure-img img-fluid rounded border"
-              alt="Terminal showing the clone command and Receiving objects: 100%."
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-          <figcaption class="figure-caption">
-            The download is complete when the prompt returns. Select the image
-            to view it full size.
-          </figcaption>
-        </figure>
-        <figure v-if="app.platform === 'Windows'" class="figure d-block my-3">
-          <a
-            href="./assets/images/windows/winGitClone.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: The download is complete when the prompt returns. Earlier commands shown are example history."
-            ><img
-              src="./assets/images/windows/winGitClone.png"
-              class="figure-img img-fluid rounded border"
-              alt="Command Prompt showing git clone and completed download output."
-              loading="lazy"
-              decoding="async"
-          /></a>
-          <figcaption class="figure-caption">
-            The download is complete when the prompt returns. Earlier commands
-            shown are example history. Select the image to view it full size.
-          </figcaption>
-        </figure>
+        <div class="instruction-row">
+          <div class="instruction-copy">
+            <p>
+              Type the following command and press
+              <strong
+                ><span
+                  v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                  >Enter</span
+                ><span v-if="app.platform === 'Mac'">Return</span></strong
+              >:
+            </p>
+            <div
+              v-scope='CodeBlock({ code: "git clone https://github.com/trevorwattles/wrtg-316-instructions.git" })'
+            ></div>
+            <aside class="alert alert-secondary mt-3" role="note">
+              <p class="mb-0">
+                <strong>Note:</strong> The clone command is used to go to a
+                certain file on the website GitHub and download it to your
+                computer. It is the command line way of downloading a file off
+                the internet.
+              </p>
+            </aside>
+            <p>
+              Wait until the line <code>Receiving objects: 100%</code> appears
+              and the cursor returns.
+            </p>
+          </div>
+          <div class="instruction-visual">
+            <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
+              <a
+                aria-label="Open full-size image: The download is complete when the prompt returns."
+                href="./assets/images/macos/gitClone.png"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt="Terminal showing the clone command and Receiving objects: 100%."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/macos/gitClone.png"
+                />
+              </a>
+              <figcaption class="figure-caption">
+                The download is complete when the prompt returns. Select the
+                image to view it full size.
+              </figcaption>
+            </figure>
+            <figure
+              class="figure d-block my-3"
+              v-if="app.platform === 'Windows'"
+            >
+              <a
+                aria-label="Open full-size image: The download is complete when the prompt returns. Earlier commands shown are example history."
+                href="./assets/images/windows/winGitClone.png"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><img
+                  alt="Command Prompt showing git clone and completed download output."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/windows/winGitClone.png"
+              /></a>
+              <figcaption class="figure-caption">
+                The download is complete when the prompt returns. Earlier
+                commands shown are example history. Select the image to view it
+                full size.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
         <aside
-          class="alert alert-info mt-3"
-          role="note"
           aria-label="Troubleshooting"
+          class="alert alert-warning mt-3"
+          role="note"
         >
           <h3 class="h6">Troubleshooting</h3>
           <p>
@@ -712,63 +878,76 @@
     >
 
     <template
+      data-title-linux="Step 5: Open the Program's Folder"
+      data-title-mac="Step 5: Open the Program's Folder"
+      data-title-windows="Step 5: Open the Program's Folder"
       id="step-5-template"
-      data-title-windows="Step 5: Open the Program&#x27;s Folder"
-      data-title-mac="Step 5: Open the Program&#x27;s Folder"
-      data-title-linux="Step 5: Open the Program&#x27;s Folder"
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
-        <p>
-          Type the following command and press
-          <strong
-            ><span v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-              >Enter</span
-            ><span v-if="app.platform === 'Mac'">Return</span></strong
-          >:
-        </p>
-        <div v-scope='CodeBlock({ code: "cd wrtg-316-instructions" })'></div>
-        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-          <a
-            href="./assets/images/macos/cdWriting.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: Open the downloaded program folder."
-          >
-            <img
-              src="./assets/images/macos/cdWriting.png"
-              class="figure-img img-fluid rounded border"
-              alt="Terminal showing cd wrtg-316-instructions and the updated folder prompt."
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-          <figcaption class="figure-caption">
-            Open the downloaded program folder. Select the image to view it full
-            size.
-          </figcaption>
-        </figure>
-        <figure v-if="app.platform === 'Windows'" class="figure d-block my-3">
-          <a
-            href="./assets/images/windows/winCdWriting.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: Open the downloaded program folder."
-            ><img
-              src="./assets/images/windows/winCdWriting.png"
-              class="figure-img img-fluid rounded border"
-              alt="Command Prompt showing cd wrtg-316-instructions and the updated folder prompt."
-              loading="lazy"
-              decoding="async"
-          /></a>
-          <figcaption class="figure-caption">
-            Open the downloaded program folder. Select the image to view it full
-            size.
-          </figcaption>
-        </figure>
+        <div class="instruction-row">
+          <div class="instruction-copy">
+            <p>
+              Type the following command and press
+              <strong
+                ><span
+                  v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                  >Enter</span
+                ><span v-if="app.platform === 'Mac'">Return</span></strong
+              >:
+            </p>
+            <div
+              v-scope='CodeBlock({ code: "cd wrtg-316-instructions" })'
+            ></div>
+          </div>
+          <div class="instruction-visual">
+            <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
+              <a
+                aria-label="Open full-size image: Open the downloaded program folder."
+                href="./assets/images/macos/cdWriting.png"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt="Terminal showing cd wrtg-316-instructions and the updated folder prompt."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/macos/cdWriting.png"
+                />
+              </a>
+              <figcaption class="figure-caption">
+                Open the downloaded program folder. Select the image to view it
+                full size.
+              </figcaption>
+            </figure>
+            <figure
+              class="figure d-block my-3"
+              v-if="app.platform === 'Windows'"
+            >
+              <a
+                aria-label="Open full-size image: Open the downloaded program folder."
+                href="./assets/images/windows/winCdWriting.png"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><img
+                  alt="Command Prompt showing cd wrtg-316-instructions and the updated folder prompt."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/windows/winCdWriting.png"
+              /></a>
+              <figcaption class="figure-caption">
+                Open the downloaded program folder. Select the image to view it
+                full size.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
         <aside
-          class="alert alert-info mt-3"
-          role="note"
           aria-label="Troubleshooting"
+          class="alert alert-warning mt-3"
+          role="note"
         >
           <h3 class="h6">Troubleshooting</h3>
           <p>
@@ -794,69 +973,103 @@
     >
 
     <template
-      id="step-6-template"
-      data-title-windows="Step 6: Confirm That the Game File Is Present"
-      data-title-mac="Step 6: Confirm That the Game File Is Present"
       data-title-linux="Step 6: Confirm That the Game File Is Present"
+      data-title-mac="Step 6: Confirm That the Game File Is Present"
+      data-title-windows="Step 6: Confirm That the Game File Is Present"
+      id="step-6-template"
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
-        <p>
-          Type the following command and press
-          <strong
-            ><span v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-              >Enter</span
-            ><span v-if="app.platform === 'Mac'">Return</span></strong
-          >:
-        </p>
-        <div v-if="app.platform === 'Windows'">
-          <div v-scope='CodeBlock({ code: "dir" })'></div>
+        <div class="instruction-row">
+          <div class="instruction-copy">
+            <p>
+              Type the following command and press
+              <strong
+                ><span
+                  v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                  >Enter</span
+                ><span v-if="app.platform === 'Mac'">Return</span></strong
+              >:
+            </p>
+            <div v-if="app.platform === 'Windows'">
+              <div v-scope='CodeBlock({ code: "dir" })'></div>
+              <aside
+                class="alert alert-secondary mt-3"
+                role="note"
+                v-if="app.platform === 'Windows'"
+              >
+                <p class="mb-0">
+                  <strong>Note:</strong> dir is short for directory which is
+                  another word for the folders you use on your computer
+                  normally. Entering the command ‘dir’ tells the command line to
+                  list out all the files in the current directory/folder.
+                </p>
+              </aside>
+            </div>
+            <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
+              <div v-scope='CodeBlock({ code: "ls" })'></div>
+              <aside
+                class="alert alert-secondary mt-3"
+                role="note"
+                v-if="app.platform === 'Mac' || app.platform === 'Linux'"
+              >
+                <p class="mb-0">
+                  <strong>Note:</strong> ls is short for <em>list</em> which is
+                  a command that tells the terminal to <em>list </em>all the
+                  files in the folder you are currently inside of.
+                </p>
+              </aside>
+            </div>
+            <p>The file <code>dino.py</code> should appear in the list.</p>
+          </div>
+          <div class="instruction-visual">
+            <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
+              <a
+                aria-label="Open full-size image: Look for dino.py; other listed files may differ."
+                href="./assets/images/macos/ls.png"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt="Terminal listing the program folder with dino.py highlighted."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/macos/ls.png"
+                />
+              </a>
+              <figcaption class="figure-caption">
+                Look for dino.py; other listed files may differ. Select the
+                image to view it full size.
+              </figcaption>
+            </figure>
+            <figure
+              class="figure d-block my-3"
+              v-if="app.platform === 'Windows'"
+            >
+              <a
+                aria-label="Open full-size image: Look for dino.py; other listed files may differ."
+                href="./assets/images/windows/dir.png"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><img
+                  alt="Command Prompt directory listing with dino.py highlighted."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/windows/dir.png"
+              /></a>
+              <figcaption class="figure-caption">
+                Look for dino.py; other listed files may differ. Select the
+                image to view it full size.
+              </figcaption>
+            </figure>
+          </div>
         </div>
-        <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
-          <div v-scope='CodeBlock({ code: "ls" })'></div>
-        </div>
-        <p>The file <code>dino.py</code> should appear in the list.</p>
-        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-          <a
-            href="./assets/images/macos/ls.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: Look for dino.py; other listed files may differ."
-          >
-            <img
-              src="./assets/images/macos/ls.png"
-              class="figure-img img-fluid rounded border"
-              alt="Terminal listing the program folder with dino.py highlighted."
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-          <figcaption class="figure-caption">
-            Look for dino.py; other listed files may differ. Select the image to
-            view it full size.
-          </figcaption>
-        </figure>
-        <figure v-if="app.platform === 'Windows'" class="figure d-block my-3">
-          <a
-            href="./assets/images/windows/dir.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: Look for dino.py; other listed files may differ."
-            ><img
-              src="./assets/images/windows/dir.png"
-              class="figure-img img-fluid rounded border"
-              alt="Command Prompt directory listing with dino.py highlighted."
-              loading="lazy"
-              decoding="async"
-          /></a>
-          <figcaption class="figure-caption">
-            Look for dino.py; other listed files may differ. Select the image to
-            view it full size.
-          </figcaption>
-        </figure>
+
         <aside
-          class="alert alert-info mt-3"
-          role="note"
           aria-label="Troubleshooting"
+          class="alert alert-warning mt-3"
+          role="note"
         >
           <h3 class="h6">Troubleshooting</h3>
           <p>
@@ -882,185 +1095,214 @@
     >
 
     <template
-      id="step-7-template"
-      data-title-windows="Step 7: Maximize the Window"
-      data-title-mac="Step 7: Enlarge the Terminal Window"
       data-title-linux="Step 7: Maximize the Terminal Window"
+      data-title-mac="Step 7: Enlarge the Terminal Window"
+      data-title-windows="Step 7: Maximize the Window"
+      id="step-7-template"
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
-        <div v-if="app.platform === 'Windows'">
-          <p>
-            Click the <strong>Maximize</strong> button (the square in the
-            upper-right corner of the window). The game needs space to display
-            correctly.
-          </p>
+        <div class="instruction-row">
+          <div class="instruction-copy">
+            <div v-if="app.platform === 'Windows'">
+              <p>
+                Click the <strong>Maximize</strong> button (the square in the
+                upper-right corner of the window). The game needs space to
+                display correctly.
+              </p>
+            </div>
+            <div v-if="app.platform === 'Mac'">
+              <p>
+                Double-click the title bar at the top of the Terminal window to
+                enlarge it. The game needs space to display correctly.
+              </p>
+            </div>
+            <div v-if="app.platform === 'Linux'">
+              <p>
+                Double-click the title bar at the top of the terminal window to
+                maximize it. The game needs space to display correctly.
+              </p>
+            </div>
+          </div>
+          <div class="instruction-visual">
+            <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
+              <a
+                aria-label="Open full-size image: An enlarged Terminal window gives the game room to display."
+                href="./assets/images/macos/enlarge.png"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt="Terminal enlarged to fill the screen."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/macos/enlarge.png"
+                />
+              </a>
+              <figcaption class="figure-caption">
+                An enlarged Terminal window gives the game room to display.
+                Select the image to view it full size.
+              </figcaption>
+            </figure>
+          </div>
         </div>
-        <div v-if="app.platform === 'Mac'">
-          <p>
-            Double-click the title bar at the top of the Terminal window to
-            enlarge it. The game needs space to display correctly.
-          </p>
-        </div>
-        <div v-if="app.platform === 'Linux'">
-          <p>
-            Double-click the title bar at the top of the terminal window to
-            maximize it. The game needs space to display correctly.
-          </p>
-        </div>
-        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-          <a
-            href="./assets/images/macos/enlarge.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: An enlarged Terminal window gives the game room to display."
-          >
-            <img
-              src="./assets/images/macos/enlarge.png"
-              class="figure-img img-fluid rounded border"
-              alt="Terminal enlarged to fill the screen."
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-          <figcaption class="figure-caption">
-            An enlarged Terminal window gives the game room to display. Select
-            the image to view it full size.
-          </figcaption>
-        </figure>
       </div></template
     >
 
     <template
-      id="step-8-template"
-      data-title-windows="Step 8: Run the Game"
-      data-title-mac="Step 8: Run the Game"
       data-title-linux="Step 8: Run the Game"
+      data-title-mac="Step 8: Run the Game"
+      data-title-windows="Step 8: Run the Game"
+      id="step-8-template"
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
-        <p>
-          Type the following command and press
-          <strong
-            ><span v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-              >Enter</span
-            ><span v-if="app.platform === 'Mac'">Return</span></strong
-          >:
-        </p>
-        <div v-if="app.platform === 'Windows'">
-          <div v-scope='CodeBlock({ code: "py dino.py" })'></div>
+        <div class="instruction-row">
+          <div class="instruction-copy">
+            <p>
+              Type the following command and press
+              <strong
+                ><span
+                  v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                  >Enter</span
+                ><span v-if="app.platform === 'Mac'">Return</span></strong
+              >:
+            </p>
+            <div v-if="app.platform === 'Windows'">
+              <div v-scope='CodeBlock({ code: "py dino.py" })'></div>
+            </div>
+            <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
+              <div v-scope='CodeBlock({ code: "python3 dino.py" })'></div>
+            </div>
+          </div>
+          <div class="instruction-visual">
+            <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
+              <a
+                aria-label="Open full-size image: Run python3 dino.py from the program folder."
+                href="./assets/images/macos/runGame.png"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt="Terminal showing python3 dino.py entered in the program folder."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/macos/runGame.png"
+                />
+              </a>
+              <figcaption class="figure-caption">
+                Run python3 dino.py from the program folder. Select the image to
+                view it full size.
+              </figcaption>
+            </figure>
+          </div>
         </div>
-        <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
-          <div v-scope='CodeBlock({ code: "python3 dino.py" })'></div>
+        <div class="instruction-row">
+          <div class="instruction-copy">
+            <p>
+              <span v-if="app.platform === 'Windows'"
+                >The dinosaur game appears in the Command Prompt window.</span
+              ><span v-if="app.platform === 'Mac'"
+                >The dinosaur game appears in the Terminal window.</span
+              ><span v-if="app.platform === 'Linux'"
+                >The dinosaur game appears in the terminal window.</span
+              >
+            </p>
+          </div>
+          <div class="instruction-visual">
+            <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
+              <a
+                aria-label="Open full-size image: The game start screen appears in Terminal."
+                href="./assets/images/macos/gameShowing.png"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt="Dino Run start screen with the message Press SPACE to start."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/macos/gameShowing.png"
+                />
+              </a>
+              <figcaption class="figure-caption">
+                The game start screen appears in Terminal. Select the image to
+                view it full size.
+              </figcaption>
+            </figure>
+            <figure
+              class="figure d-block my-3"
+              v-if="app.platform === 'Windows'"
+            >
+              <a
+                aria-label="Open full-size image: The game start screen appears in Command Prompt."
+                href="./assets/images/windows/winGameShowing.png"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><img
+                  alt="Dino Run start screen displayed in Windows Command Prompt."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/windows/winGameShowing.png"
+              /></a>
+              <figcaption class="figure-caption">
+                The game start screen appears in Command Prompt. Select the
+                image to view it full size.
+              </figcaption>
+            </figure>
+          </div>
         </div>
-        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-          <a
-            href="./assets/images/macos/runGame.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: Run python3 dino.py from the program folder."
-          >
-            <img
-              src="./assets/images/macos/runGame.png"
-              class="figure-img img-fluid rounded border"
-              alt="Terminal showing python3 dino.py entered in the program folder."
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-          <figcaption class="figure-caption">
-            Run python3 dino.py from the program folder. Select the image to
-            view it full size.
-          </figcaption>
-        </figure>
-        <p>
-          <span v-if="app.platform === 'Windows'"
-            >The dinosaur game appears in the Command Prompt window.</span
-          ><span v-if="app.platform === 'Mac'"
-            >The dinosaur game appears in the Terminal window.</span
-          ><span v-if="app.platform === 'Linux'"
-            >The dinosaur game appears in the terminal window.</span
-          >
-        </p>
-        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-          <a
-            href="./assets/images/macos/gameShowing.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: The game start screen appears in Terminal."
-          >
-            <img
-              src="./assets/images/macos/gameShowing.png"
-              class="figure-img img-fluid rounded border"
-              alt="Dino Run start screen with the message Press SPACE to start."
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-          <figcaption class="figure-caption">
-            The game start screen appears in Terminal. Select the image to view
-            it full size.
-          </figcaption>
-        </figure>
-        <figure v-if="app.platform === 'Windows'" class="figure d-block my-3">
-          <a
-            href="./assets/images/windows/winGameShowing.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: The game start screen appears in Command Prompt."
-            ><img
-              src="./assets/images/windows/winGameShowing.png"
-              class="figure-img img-fluid rounded border"
-              alt="Dino Run start screen displayed in Windows Command Prompt."
-              loading="lazy"
-              decoding="async"
-          /></a>
-          <figcaption class="figure-caption">
-            The game start screen appears in Command Prompt. Select the image to
-            view it full size.
-          </figcaption>
-        </figure>
         <div v-if="app.platform === 'Windows'">
           <aside
-            class="alert alert-info mt-3"
-            role="note"
             aria-label="Troubleshooting"
+            class="alert alert-warning mt-3"
+            role="note"
           >
             <h3 class="h6">Troubleshooting</h3>
             <p>
               <strong><code>No module named '_curses'</code> appears</strong>
             </p>
-            <p>
-              Windows needs one small add-on for the game to display in the
-              Command Prompt. Type the following command and press
-              <strong>Enter</strong>:
-            </p>
-            <div
-              v-scope='CodeBlock({ code: "py -m pip install windows-curses" })'
-            ></div>
-            <p>
-              Wait until the line
-              <code>Successfully installed windows-curses</code> appears.
-            </p>
-            <figure
-              v-if="app.platform === 'Windows'"
-              class="figure d-block my-3"
-            >
-              <a
-                href="./assets/images/windows/pipInstall.png"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open full-size image: The windows-curses add-on is installed successfully."
-                ><img
-                  src="./assets/images/windows/pipInstall.png"
-                  class="figure-img img-fluid rounded border"
-                  alt="Command Prompt showing py -m pip install windows-curses and a successful installation."
-                  loading="lazy"
-                  decoding="async"
-              /></a>
-              <figcaption class="figure-caption">
-                The windows-curses add-on is installed successfully. Select the
-                image to view it full size.
-              </figcaption>
-            </figure>
+            <div class="instruction-row">
+              <div class="instruction-copy">
+                <p>
+                  Windows needs one small add-on for the game to display in the
+                  Command Prompt. Type the following command and press
+                  <strong>Enter</strong>:
+                </p>
+                <div
+                  v-scope='CodeBlock({ code: "py -m pip install windows-curses" })'
+                ></div>
+                <p>
+                  Wait until the line
+                  <code>Successfully installed windows-curses</code> appears.
+                </p>
+              </div>
+              <div class="instruction-visual">
+                <figure
+                  class="figure d-block my-3"
+                  v-if="app.platform === 'Windows'"
+                >
+                  <a
+                    aria-label="Open full-size image: The windows-curses add-on is installed successfully."
+                    href="./assets/images/windows/pipInstall.png"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    ><img
+                      alt="Command Prompt showing py -m pip install windows-curses and a successful installation."
+                      class="figure-img img-fluid rounded border"
+                      decoding="async"
+                      loading="lazy"
+                      src="./assets/images/windows/pipInstall.png"
+                  /></a>
+                  <figcaption class="figure-caption">
+                    The windows-curses add-on is installed successfully. Select
+                    the image to view it full size.
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+
             <p>Then run <code>py dino.py</code> again.</p>
             <p>
               <strong><code>No such file or directory</code> appears</strong
@@ -1080,9 +1322,9 @@
         </div>
         <div v-if="app.platform === 'Mac'">
           <aside
-            class="alert alert-info mt-3"
-            role="note"
             aria-label="Troubleshooting"
+            class="alert alert-warning mt-3"
+            role="note"
           >
             <h3 class="h6">Troubleshooting</h3>
             <p>
@@ -1103,9 +1345,9 @@
         </div>
         <div v-if="app.platform === 'Linux'">
           <aside
-            class="alert alert-info mt-3"
-            role="note"
             aria-label="Troubleshooting"
+            class="alert alert-warning mt-3"
+            role="note"
           >
             <h3 class="h6">Troubleshooting</h3>
             <p>
@@ -1128,76 +1370,84 @@
     >
 
     <template
-      id="step-9-template"
-      data-title-windows="Step 9: Play the Game"
-      data-title-mac="Step 9: Play the Game"
       data-title-linux="Step 9: Play the Game"
+      data-title-mac="Step 9: Play the Game"
+      data-title-windows="Step 9: Play the Game"
+      id="step-9-template"
       ><div>
         <h2>{{ app.getStep(stepNumber).title }}</h2>
-        <p>
-          Press <strong>Space</strong> to start. Use the following keys to play:
-        </p>
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Key</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <strong>Space</strong>, <strong>W</strong>, or
-                  <strong>Up Arrow</strong>
-                </td>
-                <td>Jump</td>
-              </tr>
-              <tr>
-                <td><strong>S</strong> or <strong>Down Arrow</strong></td>
-                <td>Duck</td>
-              </tr>
-              <tr>
-                <td><strong>P</strong></td>
-                <td>Pause</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="instruction-row">
+          <div class="instruction-copy">
+            <p>
+              Press <strong>Space</strong> to start. Use the following keys to
+              play:
+            </p>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong>Space</strong>, <strong>W</strong>, or
+                      <strong>Up Arrow</strong>
+                    </td>
+                    <td>Jump</td>
+                  </tr>
+                  <tr>
+                    <td><strong>S</strong> or <strong>Down Arrow</strong></td>
+                    <td>Duck</td>
+                  </tr>
+                  <tr>
+                    <td><strong>P</strong></td>
+                    <td>Pause</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Press <strong>Q</strong> to quit when your done playing.
+              <span v-if="app.platform === 'Windows'">
+                The normal Command Prompt window returns. </span
+              ><span v-if="app.platform === 'Mac'">
+                The normal Terminal window returns. </span
+              ><span v-if="app.platform === 'Linux'">
+                The normal terminal window returns.
+              </span>
+            </p>
+          </div>
+          <div class="instruction-visual">
+            <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
+              <a
+                aria-label="Open full-size image: An example of the game in action."
+                href="./assets/images/macos/gameRunning.gif"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt="Animated example of the dinosaur game running in Terminal."
+                  class="figure-img img-fluid rounded border"
+                  decoding="async"
+                  loading="lazy"
+                  src="./assets/images/macos/gameRunning.gif"
+                />
+              </a>
+              <figcaption class="figure-caption">
+                An example of the game in action. Select the image to view it
+                full size.
+              </figcaption>
+            </figure>
+          </div>
         </div>
-        <p>
-          Press <strong>Q</strong> to quit when your done playing.
-          <span v-if="app.platform === 'Windows'">
-            The normal Command Prompt window returns. </span
-          ><span v-if="app.platform === 'Mac'">
-            The normal Terminal window returns. </span
-          ><span v-if="app.platform === 'Linux'">
-            The normal terminal window returns.
-          </span>
-        </p>
-        <figure v-if="app.platform === 'Mac'" class="figure d-block my-3">
-          <a
-            href="./assets/images/macos/gameRunning.gif"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open full-size image: An example of the game in action."
-          >
-            <img
-              src="./assets/images/macos/gameRunning.gif"
-              class="figure-img img-fluid rounded border"
-              alt="Animated example of the dinosaur game running in Terminal."
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-          <figcaption class="figure-caption">
-            An example of the game in action. Select the image to view it full
-            size.
-          </figcaption>
-        </figure>
+
         <aside
-          class="alert alert-info mt-3"
-          role="note"
           aria-label="Troubleshooting"
+          class="alert alert-warning mt-3"
+          role="note"
         >
           <h3 class="h6">Troubleshooting</h3>
           <p>
@@ -1227,16 +1477,6 @@
           software developers do everyday to work on programs together. You now
           have a solid foundation to start accessing public programs and working
           on your own programs yourself.
-        </p>
-        <h5>Survey</h5>
-        <p>
-          Please take the time to fill out the survey below to let us know what
-          we can improve about these instructions:
-        </p>
-        <p>
-          <a :href="app.getformUrl()" target="_blank" rel="noopener noreferrer"
-            >Click here to take the survey</a
-          >
         </p>
       </div></template
     >
