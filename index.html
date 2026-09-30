@@ -205,7 +205,7 @@
                 <strong>Note:</strong> the terminal/command prompt is known as a
                 Command Line Interface (CLI). It is a way of interacting with
                 your computer in more powerful ways that the Graphical User
-                Interface (GUI) often doesn't allow. Typing commands into your
+                Interface (GUI) often does not allow. Typing commands into your
                 CLI executes actions on your computer such as creating files,
                 moving files, inspecting files, and many more actions.
               </p>
@@ -292,7 +292,7 @@
                 <strong>Note:</strong> the terminal/command prompt is known as a
                 Command Line Interface (CLI). It is a way of interacting with
                 your computer in more powerful ways that the Graphical User
-                Interface (GUI) often doesn't allow. Typing commands into your
+                Interface (GUI) often does not allow. Typing commands into your
                 CLI executes actions on your computer such as creating files,
                 moving files, inspecting files, and many more actions.
               </p>
@@ -312,7 +312,7 @@
                 <strong>Note:</strong> the terminal/command prompt is known as a
                 Command Line Interface (CLI). It is a way of interacting with
                 your computer in more powerful ways that the Graphical User
-                Interface (GUI) often doesn't allow. Typing commands into your
+                Interface (GUI) often does not allow. Typing commands into your
                 CLI executes actions on your computer such as creating files,
                 moving files, inspecting files, and many more actions.
               </p>
@@ -552,10 +552,6 @@
               ><br />Type <code>py</code> instead of <code>python</code>, as
               shown in these instructions.
             </p>
-            <p>
-              <strong>The Command Prompt stops responding</strong><br />Press
-              <strong>Ctrl + C</strong> to stop the current command.
-            </p>
           </aside>
         </div>
         <div v-if="app.platform === 'Mac'">
@@ -608,10 +604,6 @@
               If <code>brew: command not found</code> appears, complete the
               Homebrew installer's <strong>Next steps</strong>, then try again.
             </p>
-            <p>
-              <strong>The Terminal stops responding</strong><br />Press
-              <strong>Control + C</strong> to stop the current command.
-            </p>
           </aside>
         </div>
         <div v-if="app.platform === 'Linux'">
@@ -628,10 +620,6 @@
               <code>sudo dnf install -y git python3</code>), press
               <strong>Enter</strong>, and enter your computer password when
               asked.
-            </p>
-            <p>
-              <strong>The terminal stops responding</strong><br />Press
-              <strong>Ctrl + C</strong> to stop the current command.
             </p>
           </aside>
         </div>
@@ -734,32 +722,6 @@
             </figure>
           </div>
         </div>
-
-        <aside
-          aria-label="Troubleshooting"
-          class="alert alert-warning mt-3"
-          role="note"
-        >
-          <h3 class="h6">Troubleshooting</h3>
-          <p>
-            <strong
-              ><span v-if="app.platform === 'Windows'"
-                >The Command Prompt stops responding</span
-              ><span v-if="app.platform === 'Mac'"
-                >The Terminal stops responding</span
-              ><span v-if="app.platform === 'Linux'"
-                >The terminal stops responding</span
-              ></strong
-            ><br />Press
-            <strong
-              ><span
-                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Ctrl + C</span
-              ><span v-if="app.platform === 'Mac'">Control + C</span></strong
-            >
-            to stop the current command.
-          </p>
-        </aside>
       </div></template
     >
 
@@ -855,24 +817,6 @@
             ><br />The program is already downloaded. Continue to
             <span v-scope="StepLink({ stepNumber: 5 })"></span>.
           </p>
-          <p>
-            <strong
-              ><span v-if="app.platform === 'Windows'"
-                >The Command Prompt stops responding</span
-              ><span v-if="app.platform === 'Mac'"
-                >The Terminal stops responding</span
-              ><span v-if="app.platform === 'Linux'"
-                >The terminal stops responding</span
-              ></strong
-            ><br />Press
-            <strong
-              ><span
-                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Ctrl + C</span
-              ><span v-if="app.platform === 'Mac'">Control + C</span></strong
-            >
-            to stop the current command.
-          </p>
         </aside>
       </div></template
     >
@@ -943,32 +887,6 @@
             </figure>
           </div>
         </div>
-
-        <aside
-          aria-label="Troubleshooting"
-          class="alert alert-warning mt-3"
-          role="note"
-        >
-          <h3 class="h6">Troubleshooting</h3>
-          <p>
-            <strong
-              ><span v-if="app.platform === 'Windows'"
-                >The Command Prompt stops responding</span
-              ><span v-if="app.platform === 'Mac'"
-                >The Terminal stops responding</span
-              ><span v-if="app.platform === 'Linux'"
-                >The terminal stops responding</span
-              ></strong
-            ><br />Press
-            <strong
-              ><span
-                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Ctrl + C</span
-              ><span v-if="app.platform === 'Mac'">Control + C</span></strong
-            >
-            to stop the current command.
-          </p>
-        </aside>
       </div></template
     >
 
@@ -1065,32 +983,6 @@
             </figure>
           </div>
         </div>
-
-        <aside
-          aria-label="Troubleshooting"
-          class="alert alert-warning mt-3"
-          role="note"
-        >
-          <h3 class="h6">Troubleshooting</h3>
-          <p>
-            <strong
-              ><span v-if="app.platform === 'Windows'"
-                >The Command Prompt stops responding</span
-              ><span v-if="app.platform === 'Mac'"
-                >The Terminal stops responding</span
-              ><span v-if="app.platform === 'Linux'"
-                >The terminal stops responding</span
-              ></strong
-            ><br />Press
-            <strong
-              ><span
-                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Ctrl + C</span
-              ><span v-if="app.platform === 'Mac'">Control + C</span></strong
-            >
-            to stop the current command.
-          </p>
-        </aside>
       </div></template
     >
 
@@ -1314,10 +1206,6 @@
               the window (<span v-scope="StepLink({ stepNumber: 7 })"></span>)
               and run the game again.
             </p>
-            <p>
-              <strong>The Command Prompt stops responding</strong><br />Press
-              <strong>Ctrl + C</strong> to stop the current command.
-            </p>
           </aside>
         </div>
         <div v-if="app.platform === 'Mac'">
@@ -1337,10 +1225,6 @@
               the window (<span v-scope="StepLink({ stepNumber: 7 })"></span>)
               and run the game again.
             </p>
-            <p>
-              <strong>The Terminal stops responding</strong><br />Press
-              <strong>Control + C</strong> to stop the current command.
-            </p>
           </aside>
         </div>
         <div v-if="app.platform === 'Linux'">
@@ -1359,10 +1243,6 @@
               <strong>The game looks cut off or garbled</strong><br />Maximize
               the window (<span v-scope="StepLink({ stepNumber: 7 })"></span>)
               and run the game again.
-            </p>
-            <p>
-              <strong>The terminal stops responding</strong><br />Press
-              <strong>Ctrl + C</strong> to stop the current command.
             </p>
           </aside>
         </div>
@@ -1410,7 +1290,7 @@
               </table>
             </div>
             <p>
-              Press <strong>Q</strong> to quit when your done playing.
+              Press <strong>Q</strong> to quit when you are done playing.
               <span v-if="app.platform === 'Windows'">
                 The normal Command Prompt window returns. </span
               ><span v-if="app.platform === 'Mac'">
@@ -1466,6 +1346,42 @@
 
     <template
       id="step-10-template"
+      data-title-windows="General Troubleshooting"
+      data-title-mac="General Troubleshooting"
+      data-title-linux="General Troubleshooting"
+      ><div>
+        <h2>{{ app.getStep(stepNumber).title }}</h2>
+        <p>These problems can happen during any step.</p>
+        <aside
+          aria-label="Troubleshooting"
+          class="alert alert-warning mt-3"
+          role="note"
+        >
+          <h3 class="h6">Troubleshooting</h3>
+          <p class="mb-0">
+            <strong
+              ><span v-if="app.platform === 'Windows'"
+                >The Command Prompt stops responding</span
+              ><span v-if="app.platform === 'Mac'"
+                >The Terminal stops responding</span
+              ><span v-if="app.platform === 'Linux'"
+                >The terminal stops responding</span
+              ></strong
+            ><br />Press
+            <strong
+              ><span
+                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                >Ctrl + C</span
+              ><span v-if="app.platform === 'Mac'">Control + C</span></strong
+            >
+            to stop the current command.
+          </p>
+        </aside>
+      </div></template
+    >
+
+    <template
+      id="step-11-template"
       data-title-windows="Conclusion"
       data-title-mac="Conclusion"
       data-title-linux="Conclusion"
