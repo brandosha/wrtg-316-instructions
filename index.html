@@ -55,7 +55,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-sm-8 instruction-content">
+        <div class="col-12 col-md-8 instruction-content">
           <div
             v-for="step in app.steps"
             v-show="app.currentStep === step.stepNumber"
@@ -357,12 +357,113 @@
                 <div v-scope='CodeBlock({ code: "git --version" })'></div>
                 <aside class="alert alert-secondary mt-3" role="note">
                   <p class="mb-0">
-                    <strong>Note:</strong> --version is a command that tells you
-                    what version of a program you have. The output of git
-                    --version tells you what version of the software called git
-                    is currently installed on your computer
+                    <strong>Note:</strong> <code>--version</code> is a flag
+                    available on most command-line tools that tells you what
+                    version of a program you have. The output of
+                    <code>git --version</code> tells you what version of the
+                    software called git is currently installed on your computer
                   </p>
                 </aside>
+                <div v-if="app.platform === 'Windows'">
+                  <aside
+                    aria-label="Troubleshooting"
+                    class="alert alert-warning mt-3"
+                    role="note"
+                  >
+                    <h3 class="h6">Troubleshooting</h3>
+                    <p>
+                      <strong
+                        ><code
+                          >is not recognized as an internal or external
+                          command</code
+                        >
+                        appears</strong
+                      ><br />Close and reopen the Command Prompt, then try
+                      again. If the error remains, install Git from
+                      <strong>git-scm.com</strong> and Python from
+                      <strong>python.org</strong>. In the Python installer,
+                      check the box labeled
+                      <strong>Add python.exe to PATH</strong>.
+                    </p>
+                    <p>
+                      <strong>The Command Prompt stops responding</strong
+                      ><br />Press <strong>Ctrl + C</strong> to stop the current
+                      command.
+                    </p>
+                  </aside>
+                </div>
+                <div v-if="app.platform === 'Mac'">
+                  <aside
+                    aria-label="Troubleshooting"
+                    class="alert alert-warning mt-3"
+                    role="note"
+                  >
+                    <h3 class="h6">Troubleshooting</h3>
+                    <p>
+                      <strong
+                        ><code>git: command not found</code> appears</strong
+                      ><br />
+                      Install Git with Homebrew:
+                    </p>
+                    <ol>
+                      <li>
+                        If Homebrew is not installed, follow the installation
+                        instructions at
+                        <a
+                          href="https://brew.sh/"
+                          rel="noopener noreferrer"
+                          target="_blank"
+                          >brew.sh</a
+                        >. Follow the installer's <strong>Next steps</strong> to
+                        make the <code>brew</code> command available in
+                        Terminal.
+                      </li>
+                      <li>
+                        Type the following command and press
+                        <strong>Return</strong>:
+                        <div
+                          v-scope='CodeBlock({ code: "brew install git" })'
+                        ></div>
+                        Wait for the installation to finish.
+                      </li>
+                      <li>
+                        Close and reopen Terminal, then run
+                        <code>git --version</code> again to confirm that Git is
+                        installed.
+                      </li>
+                    </ol>
+                    <p>
+                      If <code>brew: command not found</code> appears, complete
+                      the Homebrew installer's <strong>Next steps</strong>, then
+                      try again.
+                    </p>
+                    <p>
+                      <strong>The Terminal stops responding</strong><br />Press
+                      <strong>Control + C</strong> to stop the current command.
+                    </p>
+                  </aside>
+                </div>
+                <div v-if="app.platform === 'Linux'">
+                  <aside
+                    aria-label="Troubleshooting"
+                    class="alert alert-warning mt-3"
+                    role="note"
+                  >
+                    <h3 class="h6">Troubleshooting</h3>
+                    <p>
+                      <strong><code>command not found</code> appears</strong
+                      ><br />Git or Python is not installed. Type
+                      <code>sudo apt install -y git python3</code> (on Fedora,
+                      <code>sudo dnf install -y git python3</code>), press
+                      <strong>Enter</strong>, and enter your computer password
+                      when asked.
+                    </p>
+                    <p>
+                      <strong>The terminal stops responding</strong><br />Press
+                      <strong>Ctrl + C</strong> to stop the current command.
+                    </p>
+                  </aside>
+                </div>
               </div>
               <div class="instruction-visual">
                 <figure
@@ -454,6 +555,44 @@
                     </p>
                   </aside>
                 </div>
+                <div v-if="app.platform === 'Windows'">
+                  <aside
+                    aria-label="Troubleshooting"
+                    class="alert alert-warning mt-3"
+                    role="note"
+                  >
+                    <h3 class="h6">Troubleshooting</h3>
+                    <p>
+                      <strong
+                        >Typing <code>python</code> opens the Microsoft
+                        Store</strong
+                      ><br />Type <code>py</code> instead of
+                      <code>python</code>, as shown in these instructions.
+                    </p>
+                  </aside>
+                </div>
+                <div v-if="app.platform === 'Mac'">
+                  <aside
+                    aria-label="Troubleshooting"
+                    class="alert alert-warning mt-3"
+                    role="note"
+                  >
+                    <h3 class="h6">Troubleshooting</h3>
+                    <p>
+                      <strong
+                        ><code>python3: command not found</code> appears</strong
+                      ><br />
+                      Download and install Python from
+                      <a
+                        href="https://www.python.org/downloads/macos/"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        >the Python download site</a
+                      >. Close and reopen Terminal, then run
+                      <code>python3 --version</code> again.
+                    </p>
+                  </aside>
+                </div>
               </div>
               <div class="instruction-visual">
                 <figure
@@ -528,101 +667,6 @@
           Your username, computer name, and version numbers may differ from
           these examples.
         </p>
-        <div v-if="app.platform === 'Windows'">
-          <aside
-            aria-label="Troubleshooting"
-            class="alert alert-warning mt-3"
-            role="note"
-          >
-            <h3 class="h6">Troubleshooting</h3>
-            <p>
-              <strong
-                ><code
-                  >is not recognized as an internal or external command</code
-                >
-                appears</strong
-              ><br />Close and reopen the Command Prompt, then try again. If the
-              error remains, install Git from <strong>git-scm.com</strong> and
-              Python from <strong>python.org</strong>. In the Python installer,
-              check the box labeled <strong>Add python.exe to PATH</strong>.
-            </p>
-            <p>
-              <strong
-                >Typing <code>python</code> opens the Microsoft Store</strong
-              ><br />Type <code>py</code> instead of <code>python</code>, as
-              shown in these instructions.
-            </p>
-          </aside>
-        </div>
-        <div v-if="app.platform === 'Mac'">
-          <aside
-            aria-label="Troubleshooting"
-            class="alert alert-warning mt-3"
-            role="note"
-          >
-            <h3 class="h6">Troubleshooting</h3>
-            <p>
-              <strong><code>python3: command not found</code> appears</strong
-              ><br />
-              Download and install Python from
-              <a
-                href="https://www.python.org/downloads/macos/"
-                rel="noopener noreferrer"
-                target="_blank"
-                >the Python download site</a
-              >. Close and reopen Terminal, then run
-              <code>python3 --version</code> again.
-            </p>
-            <p>
-              <strong><code>git: command not found</code> appears</strong><br />
-              Install Git with Homebrew:
-            </p>
-            <ol>
-              <li>
-                If Homebrew is not installed, follow the installation
-                instructions at
-                <a
-                  href="https://brew.sh/"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  >brew.sh</a
-                >. Follow the installer's <strong>Next steps</strong> to make
-                the <code>brew</code> command available in Terminal.
-              </li>
-              <li>
-                Type the following command and press <strong>Return</strong>:
-                <div v-scope='CodeBlock({ code: "brew install git" })'></div>
-                Wait for the installation to finish.
-              </li>
-              <li>
-                Close and reopen Terminal, then run
-                <code>git --version</code> again to confirm that Git is
-                installed.
-              </li>
-            </ol>
-            <p>
-              If <code>brew: command not found</code> appears, complete the
-              Homebrew installer's <strong>Next steps</strong>, then try again.
-            </p>
-          </aside>
-        </div>
-        <div v-if="app.platform === 'Linux'">
-          <aside
-            aria-label="Troubleshooting"
-            class="alert alert-warning mt-3"
-            role="note"
-          >
-            <h3 class="h6">Troubleshooting</h3>
-            <p>
-              <strong><code>command not found</code> appears</strong><br />Git
-              or Python is not installed. Type
-              <code>sudo apt install -y git python3</code> (on Fedora,
-              <code>sudo dnf install -y git python3</code>), press
-              <strong>Enter</strong>, and enter your computer password when
-              asked.
-            </p>
-          </aside>
-        </div>
       </div></template
     >
 
@@ -676,6 +720,32 @@
                 </p>
               </aside>
             </div>
+            <aside
+              aria-label="Troubleshooting"
+              class="alert alert-warning mt-3"
+              role="note"
+            >
+              <h3 class="h6">Troubleshooting</h3>
+              <p class="mb-0">
+                <strong
+                  ><span v-if="app.platform === 'Windows'"
+                    >The Command Prompt stops responding</span
+                  ><span v-if="app.platform === 'Mac'"
+                    >The Terminal stops responding</span
+                  ><span v-if="app.platform === 'Linux'"
+                    >The terminal stops responding</span
+                  ></strong
+                ><br />Press
+                <strong
+                  ><span v-if="app.platform === 'Mac'">Control + C</span
+                  ><span
+                    v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                    >Ctrl + C</span
+                  ></strong
+                >
+                to stop the current command.
+              </p>
+            </aside>
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
@@ -758,6 +828,39 @@
               Wait until the line <code>Receiving objects: 100%</code> appears
               and the cursor returns.
             </p>
+            <aside
+              aria-label="Troubleshooting"
+              class="alert alert-warning mt-3"
+              role="note"
+            >
+              <h3 class="h6">Troubleshooting</h3>
+              <p>
+                <strong
+                  ><code>destination path ... already exists</code>
+                  appears</strong
+                ><br />The program is already downloaded. Continue to
+                <span v-scope="StepLink({ stepNumber: 5 })"></span>.
+              </p>
+              <p class="mb-0">
+                <strong
+                  ><span v-if="app.platform === 'Windows'"
+                    >The Command Prompt stops responding</span
+                  ><span v-if="app.platform === 'Mac'"
+                    >The Terminal stops responding</span
+                  ><span v-if="app.platform === 'Linux'"
+                    >The terminal stops responding</span
+                  ></strong
+                ><br />Press
+                <strong
+                  ><span v-if="app.platform === 'Mac'">Control + C</span
+                  ><span
+                    v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                    >Ctrl + C</span
+                  ></strong
+                >
+                to stop the current command.
+              </p>
+            </aside>
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
@@ -804,20 +907,6 @@
             </figure>
           </div>
         </div>
-
-        <aside
-          aria-label="Troubleshooting"
-          class="alert alert-warning mt-3"
-          role="note"
-        >
-          <h3 class="h6">Troubleshooting</h3>
-          <p>
-            <strong
-              ><code>destination path ... already exists</code> appears</strong
-            ><br />The program is already downloaded. Continue to
-            <span v-scope="StepLink({ stepNumber: 5 })"></span>.
-          </p>
-        </aside>
       </div></template
     >
 
@@ -842,6 +931,32 @@
             <div
               v-scope='CodeBlock({ code: "cd wrtg-316-instructions" })'
             ></div>
+            <aside
+              aria-label="Troubleshooting"
+              class="alert alert-warning mt-3"
+              role="note"
+            >
+              <h3 class="h6">Troubleshooting</h3>
+              <p class="mb-0">
+                <strong
+                  ><span v-if="app.platform === 'Windows'"
+                    >The Command Prompt stops responding</span
+                  ><span v-if="app.platform === 'Mac'"
+                    >The Terminal stops responding</span
+                  ><span v-if="app.platform === 'Linux'"
+                    >The terminal stops responding</span
+                  ></strong
+                ><br />Press
+                <strong
+                  ><span v-if="app.platform === 'Mac'">Control + C</span
+                  ><span
+                    v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                    >Ctrl + C</span
+                  ></strong
+                >
+                to stop the current command.
+              </p>
+            </aside>
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
@@ -938,6 +1053,32 @@
               </aside>
             </div>
             <p>The file <code>dino.py</code> should appear in the list.</p>
+            <aside
+              aria-label="Troubleshooting"
+              class="alert alert-warning mt-3"
+              role="note"
+            >
+              <h3 class="h6">Troubleshooting</h3>
+              <p class="mb-0">
+                <strong
+                  ><span v-if="app.platform === 'Windows'"
+                    >The Command Prompt stops responding</span
+                  ><span v-if="app.platform === 'Mac'"
+                    >The Terminal stops responding</span
+                  ><span v-if="app.platform === 'Linux'"
+                    >The terminal stops responding</span
+                  ></strong
+                ><br />Press
+                <strong
+                  ><span v-if="app.platform === 'Mac'">Control + C</span
+                  ><span
+                    v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                    >Ctrl + C</span
+                  ></strong
+                >
+                to stop the current command.
+              </p>
+            </aside>
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
@@ -1065,6 +1206,172 @@
             <div v-if="app.platform === 'Mac' || app.platform === 'Linux'">
               <div v-scope='CodeBlock({ code: "python3 dino.py" })'></div>
             </div>
+            <div v-if="app.platform === 'Windows'">
+              <aside
+                aria-label="Troubleshooting"
+                class="alert alert-warning mt-3"
+                role="note"
+              >
+                <h3 class="h6">Troubleshooting</h3>
+                <p>
+                  <strong
+                    ><code>No module named '_curses'</code> appears</strong
+                  >
+                </p>
+                <div class="instruction-row">
+                  <div class="instruction-copy">
+                    <p>
+                      Windows needs one small add-on for the game to display in
+                      the Command Prompt. Type the following command and press
+                      <strong>Enter</strong>:
+                    </p>
+                    <div
+                      v-scope='CodeBlock({ code: "py -m pip install windows-curses" })'
+                    ></div>
+                    <p>
+                      Wait until the line
+                      <code>Successfully installed windows-curses</code>
+                      appears.
+                    </p>
+                  </div>
+                  <div class="instruction-visual">
+                    <figure
+                      class="figure d-block my-3"
+                      v-if="app.platform === 'Windows'"
+                    >
+                      <a
+                        aria-label="Open full-size image: The windows-curses add-on is installed successfully."
+                        href="./assets/images/windows/pipInstall.png"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        ><img
+                          alt="Command Prompt showing py -m pip install windows-curses and a successful installation."
+                          class="figure-img img-fluid rounded border"
+                          decoding="async"
+                          loading="lazy"
+                          src="./assets/images/windows/pipInstall.png"
+                      /></a>
+                      <figcaption class="figure-caption">
+                        The windows-curses add-on is installed successfully.
+                        Select the image to view it full size.
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+                <p>Then run <code>py dino.py</code> again.</p>
+                <p>
+                  <strong><code>No such file or directory</code> appears</strong
+                  ><br />You are in the wrong folder. Repeat
+                  <span v-scope="StepLink({ stepNumber: 5 })"></span>.
+                </p>
+                <p>
+                  <strong>The game looks cut off or garbled</strong
+                  ><br />Maximize the window (<span
+                    v-scope="StepLink({ stepNumber: 7 })"
+                  ></span
+                  >) and run the game again.
+                </p>
+                <p class="mb-0">
+                  <strong
+                    ><span v-if="app.platform === 'Windows'"
+                      >The Command Prompt stops responding</span
+                    ><span v-if="app.platform === 'Mac'"
+                      >The Terminal stops responding</span
+                    ><span v-if="app.platform === 'Linux'"
+                      >The terminal stops responding</span
+                    ></strong
+                  ><br />Press
+                  <strong
+                    ><span v-if="app.platform === 'Mac'">Control + C</span
+                    ><span
+                      v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                      >Ctrl + C</span
+                    ></strong
+                  >
+                  to stop the current command.
+                </p>
+              </aside>
+            </div>
+            <div v-if="app.platform === 'Mac'">
+              <aside
+                aria-label="Troubleshooting"
+                class="alert alert-warning mt-3"
+                role="note"
+              >
+                <h3 class="h6">Troubleshooting</h3>
+                <p>
+                  <strong><code>No such file or directory</code> appears</strong
+                  ><br />You are in the wrong folder. Repeat
+                  <span v-scope="StepLink({ stepNumber: 5 })"></span>.
+                </p>
+                <p>
+                  <strong>The game looks cut off or garbled</strong
+                  ><br />Enlarge the window (<span
+                    v-scope="StepLink({ stepNumber: 7 })"
+                  ></span
+                  >) and run the game again.
+                </p>
+                <p class="mb-0">
+                  <strong
+                    ><span v-if="app.platform === 'Windows'"
+                      >The Command Prompt stops responding</span
+                    ><span v-if="app.platform === 'Mac'"
+                      >The Terminal stops responding</span
+                    ><span v-if="app.platform === 'Linux'"
+                      >The terminal stops responding</span
+                    ></strong
+                  ><br />Press
+                  <strong
+                    ><span v-if="app.platform === 'Mac'">Control + C</span
+                    ><span
+                      v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                      >Ctrl + C</span
+                    ></strong
+                  >
+                  to stop the current command.
+                </p>
+              </aside>
+            </div>
+            <div v-if="app.platform === 'Linux'">
+              <aside
+                aria-label="Troubleshooting"
+                class="alert alert-warning mt-3"
+                role="note"
+              >
+                <h3 class="h6">Troubleshooting</h3>
+                <p>
+                  <strong><code>No such file or directory</code> appears</strong
+                  ><br />You are in the wrong folder. Repeat
+                  <span v-scope="StepLink({ stepNumber: 5 })"></span>.
+                </p>
+                <p>
+                  <strong>The game looks cut off or garbled</strong
+                  ><br />Maximize the window (<span
+                    v-scope="StepLink({ stepNumber: 7 })"
+                  ></span
+                  >) and run the game again.
+                </p>
+                <p class="mb-0">
+                  <strong
+                    ><span v-if="app.platform === 'Windows'"
+                      >The Command Prompt stops responding</span
+                    ><span v-if="app.platform === 'Mac'"
+                      >The Terminal stops responding</span
+                    ><span v-if="app.platform === 'Linux'"
+                      >The terminal stops responding</span
+                    ></strong
+                  ><br />Press
+                  <strong
+                    ><span v-if="app.platform === 'Mac'">Control + C</span
+                    ><span
+                      v-if="app.platform === 'Windows' || app.platform === 'Linux'"
+                      >Ctrl + C</span
+                    ></strong
+                  >
+                  to stop the current command.
+                </p>
+              </aside>
+            </div>
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
@@ -1145,107 +1452,6 @@
             </figure>
           </div>
         </div>
-        <div v-if="app.platform === 'Windows'">
-          <aside
-            aria-label="Troubleshooting"
-            class="alert alert-warning mt-3"
-            role="note"
-          >
-            <h3 class="h6">Troubleshooting</h3>
-            <p>
-              <strong><code>No module named '_curses'</code> appears</strong>
-            </p>
-            <div class="instruction-row">
-              <div class="instruction-copy">
-                <p>
-                  Windows needs one small add-on for the game to display in the
-                  Command Prompt. Type the following command and press
-                  <strong>Enter</strong>:
-                </p>
-                <div
-                  v-scope='CodeBlock({ code: "py -m pip install windows-curses" })'
-                ></div>
-                <p>
-                  Wait until the line
-                  <code>Successfully installed windows-curses</code> appears.
-                </p>
-              </div>
-              <div class="instruction-visual">
-                <figure
-                  class="figure d-block my-3"
-                  v-if="app.platform === 'Windows'"
-                >
-                  <a
-                    aria-label="Open full-size image: The windows-curses add-on is installed successfully."
-                    href="./assets/images/windows/pipInstall.png"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    ><img
-                      alt="Command Prompt showing py -m pip install windows-curses and a successful installation."
-                      class="figure-img img-fluid rounded border"
-                      decoding="async"
-                      loading="lazy"
-                      src="./assets/images/windows/pipInstall.png"
-                  /></a>
-                  <figcaption class="figure-caption">
-                    The windows-curses add-on is installed successfully. Select
-                    the image to view it full size.
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-
-            <p>Then run <code>py dino.py</code> again.</p>
-            <p>
-              <strong><code>No such file or directory</code> appears</strong
-              ><br />You are in the wrong folder. Repeat
-              <span v-scope="StepLink({ stepNumber: 5 })"></span>.
-            </p>
-            <p>
-              <strong>The game looks cut off or garbled</strong><br />Maximize
-              the window (<span v-scope="StepLink({ stepNumber: 7 })"></span>)
-              and run the game again.
-            </p>
-          </aside>
-        </div>
-        <div v-if="app.platform === 'Mac'">
-          <aside
-            aria-label="Troubleshooting"
-            class="alert alert-warning mt-3"
-            role="note"
-          >
-            <h3 class="h6">Troubleshooting</h3>
-            <p>
-              <strong><code>No such file or directory</code> appears</strong
-              ><br />You are in the wrong folder. Repeat
-              <span v-scope="StepLink({ stepNumber: 5 })"></span>.
-            </p>
-            <p>
-              <strong>The game looks cut off or garbled</strong><br />Enlarge
-              the window (<span v-scope="StepLink({ stepNumber: 7 })"></span>)
-              and run the game again.
-            </p>
-          </aside>
-        </div>
-        <div v-if="app.platform === 'Linux'">
-          <aside
-            aria-label="Troubleshooting"
-            class="alert alert-warning mt-3"
-            role="note"
-          >
-            <h3 class="h6">Troubleshooting</h3>
-            <p>
-              <strong><code>No such file or directory</code> appears</strong
-              ><br />You are in the wrong folder. Repeat
-              <span v-scope="StepLink({ stepNumber: 5 })"></span>.
-            </p>
-            <p>
-              <strong>The game looks cut off or garbled</strong><br />Maximize
-              the window (<span v-scope="StepLink({ stepNumber: 7 })"></span>)
-              and run the game again.
-            </p>
-          </aside>
-        </div>
       </div></template
     >
 
@@ -1299,6 +1505,23 @@
                 The normal terminal window returns.
               </span>
             </p>
+            <aside
+              aria-label="Troubleshooting"
+              class="alert alert-warning mt-3"
+              role="note"
+            >
+              <h3 class="h6">Troubleshooting</h3>
+              <p>
+                <strong>The keys do nothing</strong><br /><span
+                  v-if="app.platform === 'Windows'"
+                  >Click inside the Command Prompt window, then try again. </span
+                ><span v-if="app.platform === 'Mac'"
+                  >Click inside the Terminal window, then try again. </span
+                ><span v-if="app.platform === 'Linux'"
+                  >Click inside the terminal window, then try again.
+                </span>
+              </p>
+            </aside>
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
@@ -1323,65 +1546,11 @@
             </figure>
           </div>
         </div>
-
-        <aside
-          aria-label="Troubleshooting"
-          class="alert alert-warning mt-3"
-          role="note"
-        >
-          <h3 class="h6">Troubleshooting</h3>
-          <p>
-            <strong>The keys do nothing</strong><br /><span
-              v-if="app.platform === 'Windows'"
-              >Click inside the Command Prompt window, then try again. </span
-            ><span v-if="app.platform === 'Mac'"
-              >Click inside the Terminal window, then try again. </span
-            ><span v-if="app.platform === 'Linux'"
-              >Click inside the terminal window, then try again.
-            </span>
-          </p>
-        </aside>
       </div></template
     >
 
     <template
       id="step-10-template"
-      data-title-windows="General Troubleshooting"
-      data-title-mac="General Troubleshooting"
-      data-title-linux="General Troubleshooting"
-      ><div>
-        <h2>{{ app.getStep(stepNumber).title }}</h2>
-        <p>These problems can happen during any step.</p>
-        <aside
-          aria-label="Troubleshooting"
-          class="alert alert-warning mt-3"
-          role="note"
-        >
-          <h3 class="h6">Troubleshooting</h3>
-          <p class="mb-0">
-            <strong
-              ><span v-if="app.platform === 'Windows'"
-                >The Command Prompt stops responding</span
-              ><span v-if="app.platform === 'Mac'"
-                >The Terminal stops responding</span
-              ><span v-if="app.platform === 'Linux'"
-                >The terminal stops responding</span
-              ></strong
-            ><br />Press
-            <strong
-              ><span
-                v-if="app.platform === 'Windows' || app.platform === 'Linux'"
-                >Ctrl + C</span
-              ><span v-if="app.platform === 'Mac'">Control + C</span></strong
-            >
-            to stop the current command.
-          </p>
-        </aside>
-      </div></template
-    >
-
-    <template
-      id="step-11-template"
       data-title-windows="Conclusion"
       data-title-mac="Conclusion"
       data-title-linux="Conclusion"
