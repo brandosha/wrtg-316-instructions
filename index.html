@@ -143,22 +143,13 @@
                       class="figure d-block my-3"
                       v-if="app.platform === 'Windows'"
                     >
-                      <a
-                        aria-label="Open full-size image: Click the Start button."
-                        href="./assets/images/windows/startButton.png"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        ><img
-                          alt="Windows Start menu with an arrow pointing to the Start button."
-                          class="figure-img img-fluid rounded border"
-                          decoding="async"
-                          loading="lazy"
-                          src="./assets/images/windows/startButton.png"
-                      /></a>
-                      <figcaption class="figure-caption">
-                        Click the Start button. Select the image to view it full
-                        size.
-                      </figcaption>
+                      <img
+                        alt="Windows Start menu with an arrow pointing to the Start button."
+                        class="figure-img img-fluid rounded border"
+                        decoding="async"
+                        loading="lazy"
+                        src="./assets/images/windows/startButton.png"
+                      />
                     </figure>
                   </div>
                 </div>
@@ -174,22 +165,13 @@
                       class="figure d-block my-3"
                       v-if="app.platform === 'Windows'"
                     >
-                      <a
-                        aria-label="Open full-size image: Search for cmd and open Command Prompt."
-                        href="./assets/images/windows/cmdShowing.png"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        ><img
-                          alt="Windows search for cmd showing Command Prompt as the best match."
-                          class="figure-img img-fluid rounded border"
-                          decoding="async"
-                          loading="lazy"
-                          src="./assets/images/windows/cmdShowing.png"
-                      /></a>
-                      <figcaption class="figure-caption">
-                        Search for cmd and open Command Prompt. Select the image
-                        to view it full size.
-                      </figcaption>
+                      <img
+                        alt="Windows search for cmd showing Command Prompt as the best match."
+                        class="figure-img img-fluid rounded border"
+                        decoding="async"
+                        loading="lazy"
+                        src="./assets/images/windows/cmdShowing.png"
+                      />
                     </figure>
                   </div>
                 </div>
@@ -227,24 +209,13 @@
                       class="figure d-block my-3"
                       v-if="app.platform === 'Mac'"
                     >
-                      <a
-                        aria-label="Open full-size image: Press Command + Space to open Spotlight."
-                        href="./assets/images/macos/keyboard.png"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <img
-                          alt="Mac keyboard with Command and Space highlighted."
-                          class="figure-img img-fluid rounded border"
-                          decoding="async"
-                          loading="lazy"
-                          src="./assets/images/macos/keyboard.png"
-                        />
-                      </a>
-                      <figcaption class="figure-caption">
-                        Press Command + Space to open Spotlight. Select the
-                        image to view it full size.
-                      </figcaption>
+                      <img
+                        alt="Mac keyboard with Command and Space highlighted."
+                        class="figure-img img-fluid rounded border"
+                        decoding="async"
+                        loading="lazy"
+                        src="./assets/images/macos/keyboard.png"
+                      />
                     </figure>
                   </div>
                 </div>
@@ -260,24 +231,13 @@
                       class="figure d-block my-3"
                       v-if="app.platform === 'Mac'"
                     >
-                      <a
-                        aria-label="Open full-size image: Search for Terminal and press Return."
-                        href="./assets/images/macos/spotlightSearch.png"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <img
-                          alt="Spotlight Search showing Terminal as the first result."
-                          class="figure-img img-fluid rounded border"
-                          decoding="async"
-                          loading="lazy"
-                          src="./assets/images/macos/spotlightSearch.png"
-                        />
-                      </a>
-                      <figcaption class="figure-caption">
-                        Search for Terminal and press Return. Select the image
-                        to view it full size.
-                      </figcaption>
+                      <img
+                        alt="Spotlight Search showing Terminal as the first result."
+                        class="figure-img img-fluid rounded border"
+                        decoding="async"
+                        loading="lazy"
+                        src="./assets/images/macos/spotlightSearch.png"
+                      />
                     </figure>
                   </div>
                 </div>
@@ -380,8 +340,8 @@
                         appears</strong
                       ><br />Close and reopen the Command Prompt, then try
                       again. If the error remains, install Git from
-                      <strong>git-scm.com</strong> and Python from
-                      <strong>python.org</strong>. In the Python installer,
+                      <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">git-scm.com</a> and Python from
+                      <a href="https://python.org/downloads/" target="_blank" rel="noopener noreferrer">python.org</a>. In the Python installer,
                       check the box labeled
                       <strong>Add python.exe to PATH</strong>.
                     </p>
@@ -470,45 +430,25 @@
                   class="figure d-block my-3"
                   v-if="app.platform === 'Windows'"
                 >
-                  <a
-                    aria-label="Open full-size image: An example of Git version output."
-                    href="./assets/images/windows/winGitVersion.png"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    ><img
-                      alt="Command Prompt showing git --version and a Git version number."
-                      class="figure-img img-fluid rounded border"
-                      decoding="async"
-                      loading="lazy"
-                      src="./assets/images/windows/winGitVersion.png"
-                  /></a>
-                  <figcaption class="figure-caption">
-                    An example of Git version output. Select the image to view
-                    it full size.
-                  </figcaption>
+                  <img
+                    alt="Command Prompt showing git --version and a Git version number."
+                    class="figure-img img-fluid rounded border"
+                    decoding="async"
+                    loading="lazy"
+                    src="./assets/images/windows/winGitVersion.png"
+                  />
                 </figure>
                 <figure
                   class="figure d-block my-3"
                   v-if="app.platform === 'Mac'"
                 >
-                  <a
-                    aria-label="Open full-size image: An example of Git version output."
-                    href="./assets/images/macos/gitVersion.png"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <img
-                      alt="Terminal showing git --version and an installed Git version."
-                      class="figure-img img-fluid rounded border"
-                      decoding="async"
-                      loading="lazy"
-                      src="./assets/images/macos/gitVersion.png"
-                    />
-                  </a>
-                  <figcaption class="figure-caption">
-                    An example of Git version output. Select the image to view
-                    it full size.
-                  </figcaption>
+                  <img
+                    alt="Terminal showing git --version and an installed Git version."
+                    class="figure-img img-fluid rounded border"
+                    decoding="async"
+                    loading="lazy"
+                    src="./assets/images/macos/gitVersion.png"
+                  />
                 </figure>
               </div>
             </div>
@@ -599,45 +539,25 @@
                   class="figure d-block my-3"
                   v-if="app.platform === 'Windows'"
                 >
-                  <a
-                    aria-label="Open full-size image: An example of Python version output."
-                    href="./assets/images/windows/winPyVersion.png"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    ><img
-                      alt="Command Prompt showing py --version and Python 3.14.3."
-                      class="figure-img img-fluid rounded border"
-                      decoding="async"
-                      loading="lazy"
-                      src="./assets/images/windows/winPyVersion.png"
-                  /></a>
-                  <figcaption class="figure-caption">
-                    An example of Python version output. Select the image to
-                    view it full size.
-                  </figcaption>
+                  <img
+                    alt="Command Prompt showing py --version and Python 3.14.3."
+                    class="figure-img img-fluid rounded border"
+                    decoding="async"
+                    loading="lazy"
+                    src="./assets/images/windows/winPyVersion.png"
+                  />
                 </figure>
                 <figure
                   class="figure d-block my-3"
                   v-if="app.platform === 'Mac'"
                 >
-                  <a
-                    aria-label="Open full-size image: An example of Python version output."
-                    href="./assets/images/macos/pythonVersion.png"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <img
-                      alt="Terminal showing python3 --version and Python 3.11.5."
-                      class="figure-img img-fluid rounded border"
-                      decoding="async"
-                      loading="lazy"
-                      src="./assets/images/macos/pythonVersion.png"
-                    />
-                  </a>
-                  <figcaption class="figure-caption">
-                    An example of Python version output. Select the image to
-                    view it full size.
-                  </figcaption>
+                  <img
+                    alt="Terminal showing python3 --version and Python 3.11.5."
+                    class="figure-img img-fluid rounded border"
+                    decoding="async"
+                    loading="lazy"
+                    src="./assets/images/macos/pythonVersion.png"
+                  />
                 </figure>
               </div>
             </div>
@@ -749,51 +669,29 @@
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
-              <a
-                aria-label="Open full-size image: The cd ~ command returns you to your home folder."
-                href="./assets/images/macos/cdHome.png"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="Terminal showing cd ~ and a home-folder prompt."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/macos/cdHome.png"
-                />
-              </a>
-              <figcaption class="figure-caption">
-                The cd ~ command returns you to your home folder. Select the
-                image to view it full size.
-              </figcaption>
+              <img
+                alt="Terminal showing cd ~ and a home-folder prompt."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/macos/cdHome.png"
+              />
             </figure>
             <figure
               class="figure d-block my-3"
               v-if="app.platform === 'Windows'"
             >
-              <a
-                aria-label="Open full-size image: Use cd %USERPROFILE% to return to your user folder. Earlier commands shown are example history."
-                href="./assets/images/windows/cdWindows.png"
-                rel="noopener noreferrer"
-                target="_blank"
-                ><img
-                  alt="Command Prompt showing cd %USERPROFILE% and the user-folder prompt."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/windows/cdWindows.png"
-              /></a>
-              <figcaption class="figure-caption">
-                Use cd %USERPROFILE% to return to your user folder. Earlier
-                commands shown are example history. Select the image to view it
-                full size.
-              </figcaption>
+              <img
+                alt="Command Prompt showing cd %USERPROFILE% and the user-folder prompt."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/windows/cdWindows.png"
+              />
             </figure>
           </div>
-        </div>
-      </div></template
-    >
+        </div></div
+    ></template>
 
     <template
       data-title-linux="Step 4: Download (Clone) the Program"
@@ -864,51 +762,29 @@
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
-              <a
-                aria-label="Open full-size image: The download is complete when the prompt returns."
-                href="./assets/images/macos/gitClone.png"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="Terminal showing the clone command and Receiving objects: 100%."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/macos/gitClone.png"
-                />
-              </a>
-              <figcaption class="figure-caption">
-                The download is complete when the prompt returns. Select the
-                image to view it full size.
-              </figcaption>
+              <img
+                alt="Terminal showing the clone command and Receiving objects: 100%."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/macos/gitClone.png"
+              />
             </figure>
             <figure
               class="figure d-block my-3"
               v-if="app.platform === 'Windows'"
             >
-              <a
-                aria-label="Open full-size image: The download is complete when the prompt returns. Earlier commands shown are example history."
-                href="./assets/images/windows/winGitClone.png"
-                rel="noopener noreferrer"
-                target="_blank"
-                ><img
-                  alt="Command Prompt showing git clone and completed download output."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/windows/winGitClone.png"
-              /></a>
-              <figcaption class="figure-caption">
-                The download is complete when the prompt returns. Earlier
-                commands shown are example history. Select the image to view it
-                full size.
-              </figcaption>
+              <img
+                alt="Command Prompt showing git clone and completed download output."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/windows/winGitClone.png"
+              />
             </figure>
           </div>
-        </div>
-      </div></template
-    >
+        </div></div
+    ></template>
 
     <template
       data-title-linux="Step 5: Open the Program's Folder"
@@ -960,50 +836,29 @@
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
-              <a
-                aria-label="Open full-size image: Open the downloaded program folder."
-                href="./assets/images/macos/cdWriting.png"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="Terminal showing cd wrtg-316-instructions and the updated folder prompt."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/macos/cdWriting.png"
-                />
-              </a>
-              <figcaption class="figure-caption">
-                Open the downloaded program folder. Select the image to view it
-                full size.
-              </figcaption>
+              <img
+                alt="Terminal showing cd wrtg-316-instructions and the updated folder prompt."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/macos/cdWriting.png"
+              />
             </figure>
             <figure
               class="figure d-block my-3"
               v-if="app.platform === 'Windows'"
             >
-              <a
-                aria-label="Open full-size image: Open the downloaded program folder."
-                href="./assets/images/windows/winCdWriting.png"
-                rel="noopener noreferrer"
-                target="_blank"
-                ><img
-                  alt="Command Prompt showing cd wrtg-316-instructions and the updated folder prompt."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/windows/winCdWriting.png"
-              /></a>
-              <figcaption class="figure-caption">
-                Open the downloaded program folder. Select the image to view it
-                full size.
-              </figcaption>
+              <img
+                alt="Command Prompt showing cd wrtg-316-instructions and the updated folder prompt."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/windows/winCdWriting.png"
+              />
             </figure>
           </div>
-        </div>
-      </div></template
-    >
+        </div></div
+    ></template>
 
     <template
       data-title-linux="Step 6: Confirm That the Game File Is Present"
@@ -1082,50 +937,29 @@
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
-              <a
-                aria-label="Open full-size image: Look for dino.py; other listed files may differ."
-                href="./assets/images/macos/ls.png"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="Terminal listing the program folder with dino.py highlighted."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/macos/ls.png"
-                />
-              </a>
-              <figcaption class="figure-caption">
-                Look for dino.py; other listed files may differ. Select the
-                image to view it full size.
-              </figcaption>
+              <img
+                alt="Terminal listing the program folder with dino.py highlighted."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/macos/ls.png"
+              />
             </figure>
             <figure
               class="figure d-block my-3"
               v-if="app.platform === 'Windows'"
             >
-              <a
-                aria-label="Open full-size image: Look for dino.py; other listed files may differ."
-                href="./assets/images/windows/dir.png"
-                rel="noopener noreferrer"
-                target="_blank"
-                ><img
-                  alt="Command Prompt directory listing with dino.py highlighted."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/windows/dir.png"
-              /></a>
-              <figcaption class="figure-caption">
-                Look for dino.py; other listed files may differ. Select the
-                image to view it full size.
-              </figcaption>
+              <img
+                alt="Command Prompt directory listing with dino.py highlighted."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/windows/dir.png"
+              />
             </figure>
           </div>
-        </div>
-      </div></template
-    >
+        </div></div
+    ></template>
 
     <template
       data-title-linux="Step 7: Maximize the Terminal Window"
@@ -1158,29 +992,17 @@
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
-              <a
-                aria-label="Open full-size image: An enlarged Terminal window gives the game room to display."
-                href="./assets/images/macos/enlarge.png"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="Terminal enlarged to fill the screen."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/macos/enlarge.png"
-                />
-              </a>
-              <figcaption class="figure-caption">
-                An enlarged Terminal window gives the game room to display.
-                Select the image to view it full size.
-              </figcaption>
+              <img
+                alt="Terminal enlarged to fill the screen."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/macos/enlarge.png"
+              />
             </figure>
           </div>
-        </div>
-      </div></template
-    >
+        </div></div
+    ></template>
 
     <template
       data-title-linux="Step 8: Run the Game"
@@ -1239,22 +1061,13 @@
                       class="figure d-block my-3"
                       v-if="app.platform === 'Windows'"
                     >
-                      <a
-                        aria-label="Open full-size image: The windows-curses add-on is installed successfully."
-                        href="./assets/images/windows/pipInstall.png"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        ><img
-                          alt="Command Prompt showing py -m pip install windows-curses and a successful installation."
-                          class="figure-img img-fluid rounded border"
-                          decoding="async"
-                          loading="lazy"
-                          src="./assets/images/windows/pipInstall.png"
-                      /></a>
-                      <figcaption class="figure-caption">
-                        The windows-curses add-on is installed successfully.
-                        Select the image to view it full size.
-                      </figcaption>
+                      <img
+                        alt="Command Prompt showing py -m pip install windows-curses and a successful installation."
+                        class="figure-img img-fluid rounded border"
+                        decoding="async"
+                        loading="lazy"
+                        src="./assets/images/windows/pipInstall.png"
+                      />
                     </figure>
                   </div>
                 </div>
@@ -1375,24 +1188,13 @@
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
-              <a
-                aria-label="Open full-size image: Run python3 dino.py from the program folder."
-                href="./assets/images/macos/runGame.png"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="Terminal showing python3 dino.py entered in the program folder."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/macos/runGame.png"
-                />
-              </a>
-              <figcaption class="figure-caption">
-                Run python3 dino.py from the program folder. Select the image to
-                view it full size.
-              </figcaption>
+              <img
+                alt="Terminal showing python3 dino.py entered in the program folder."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/macos/runGame.png"
+              />
             </figure>
           </div>
         </div>
@@ -1410,50 +1212,29 @@
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
-              <a
-                aria-label="Open full-size image: The game start screen appears in Terminal."
-                href="./assets/images/macos/gameShowing.png"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="Dino Run start screen with the message Press SPACE to start."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/macos/gameShowing.png"
-                />
-              </a>
-              <figcaption class="figure-caption">
-                The game start screen appears in Terminal. Select the image to
-                view it full size.
-              </figcaption>
+              <img
+                alt="Dino Run start screen with the message Press SPACE to start."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/macos/gameShowing.png"
+              />
             </figure>
             <figure
               class="figure d-block my-3"
               v-if="app.platform === 'Windows'"
             >
-              <a
-                aria-label="Open full-size image: The game start screen appears in Command Prompt."
-                href="./assets/images/windows/winGameShowing.png"
-                rel="noopener noreferrer"
-                target="_blank"
-                ><img
-                  alt="Dino Run start screen displayed in Windows Command Prompt."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/windows/winGameShowing.png"
-              /></a>
-              <figcaption class="figure-caption">
-                The game start screen appears in Command Prompt. Select the
-                image to view it full size.
-              </figcaption>
+              <img
+                alt="Dino Run start screen displayed in Windows Command Prompt."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/windows/winGameShowing.png"
+              />
             </figure>
           </div>
-        </div>
-      </div></template
-    >
+        </div></div
+    ></template>
 
     <template
       data-title-linux="Step 9: Play the Game"
@@ -1525,29 +1306,17 @@
           </div>
           <div class="instruction-visual">
             <figure class="figure d-block my-3" v-if="app.platform === 'Mac'">
-              <a
-                aria-label="Open full-size image: An example of the game in action."
-                href="./assets/images/macos/gameRunning.gif"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="Animated example of the dinosaur game running in Terminal."
-                  class="figure-img img-fluid rounded border"
-                  decoding="async"
-                  loading="lazy"
-                  src="./assets/images/macos/gameRunning.gif"
-                />
-              </a>
-              <figcaption class="figure-caption">
-                An example of the game in action. Select the image to view it
-                full size.
-              </figcaption>
+              <img
+                alt="Animated example of the dinosaur game running in Terminal."
+                class="figure-img img-fluid rounded border"
+                decoding="async"
+                loading="lazy"
+                src="./assets/images/macos/gameRunning.gif"
+              />
             </figure>
           </div>
-        </div>
-      </div></template
-    >
+        </div></div
+    ></template>
 
     <template
       id="step-10-template"
